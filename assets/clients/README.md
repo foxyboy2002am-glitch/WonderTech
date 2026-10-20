@@ -1,5 +1,10 @@
-# WonderTech client logos
+# WonderTech client showcase
 
-Upload client logo images into this folder. Prefer optimized WebP; use PNG for transparency if needed. Keep filenames lowercase with hyphens. Suggested filenames: `chicken-factor.webp`, `aisha-restaurant.webp`, `malaki.webp`, `rema.webp`, `joe-park.webp`, `alsalam-factory.webp`, `logexco.webp`, `al-malaz.webp`, `alhayat-capital.webp`, `haya-ai.webp`, `sultan-coffee.webp`, `tavola.webp`, `line-restaurant.webp`, `friend-peanut.webp`, `palm-logo.webp`, and `odoo.svg` or `odoo.png`.
+The client section now uses responsive, consistent brand-mark cards with accessible client names, a highlighted Chicken Factor treatment, and mobile-friendly spacing.
 
-This folder is ready for uploads; the actual image binaries are not included yet.
+## Real logo assets
+The original customer logo images have **not** been committed to this folder yet. The current cards intentionally use typographic initials/name marks rather than pretending they are official logo files. Once the supplied originals are uploaded, replace the text marks with those approved image files (prefer WebP; keep transparent originals as PNG/SVG when available).
+
+Suggested file names: `client-aisha.webp`, `client-malaki.webp`, `client-rema.webp`, `client-joe-park.webp`, `client-alsalam.webp`, `client-logexco.webp`, `client-malaz.webp`, `client-alhayat.webp`, `client-haya-ai.webp`, `client-sultan-coffee.webp`, `client-chicken-factor.webp`, `client-tavola.webp`, `client-palm.webp`, `client-line.webp`, and `client-friend-peanut.webp`.
+
+No claim is made that these typographic marks are the clients' official logos.
