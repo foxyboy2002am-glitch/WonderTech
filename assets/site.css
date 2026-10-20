@@ -183,3 +183,13 @@ button:disabled{opacity:.55;cursor:not-allowed}
 .featured-tags span{border:1px solid var(--ln);border-radius:999px;padding:6px 12px;font-size:12px;font-weight:700}
 @media(max-width:600px){.cl{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.cl .client-logo{min-height:82px;padding:12px 8px;font-size:13px}.partner-panel{gap:16px}}
 @media(prefers-reduced-motion:reduce){.cl .client-logo{transition:none}.cl .client-logo:hover{transform:none}}
+
+/* Compact, responsive demo checkout; no heavy JS animation added */
+.demo-price{display:block;color:var(--mu);font-size:11px;margin-top:3px}
+.cart-total{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 0;margin:12px 0;border-block:1px solid var(--ln)}
+.cart-total strong{font-size:clamp(20px,3vw,28px);color:var(--bl)}
+#demo-checkout-form{display:grid;gap:10px}
+#demo-checkout-form label{font-weight:700;margin-top:8px}
+#demo-checkout-form input,#demo-checkout-form textarea{width:100%;box-sizing:border-box;padding:12px 14px;border:1px solid var(--ln);border-radius:10px;background:var(--bg);color:var(--ink);font:inherit}
+#demo-checkout-form textarea{min-height:90px;resize:vertical}
+@media(prefers-reduced-motion:reduce){html:focus-within{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}

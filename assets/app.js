@@ -147,14 +147,14 @@ contact:t=>head(t.ctT,t.ctS)+sec(`<div class="cols"><div><label for="n">${t.fn}<
 
 const SHOP_COPY={
  ar:{
-  titles:{store:"المتجر التجريبي",login:"تسجيل الدخول",register:"إنشاء حساب",account:"حسابي",cart:"سلة التسوق",wishlist:"المفضلة","reset-password":"استعادة كلمة المرور"},
+  titles:{store:"المتجر التجريبي",checkout:"إتمام طلب تجريبي",login:"تسجيل الدخول",register:"إنشاء حساب",account:"حسابي",cart:"سلة التسوق",wishlist:"المفضلة","reset-password":"استعادة كلمة المرور"},
   shop:"المتجر",signIn:"دخول",account:"حسابي",cart:"السلة",wishlist:"المفضلة",
   eyebrow:"تجهيز للمتجر الإلكتروني",storeTitle:"متجر WonderTech — جاهز للتطوير",storeLead:"هذه معاينة للكتالوج وتجربة التصفح فقط. المنتجات المعروضة نماذج وليست مخزونًا أو أسعار بيع فعلية.",
   demo:"معاينة تجريبية",priceOnRequest:"السعر عند الطلب",addCart:"أضف للسلة",addWish:"أضف للمفضلة",removeWish:"إزالة من المفضلة",viewCart:"عرض السلة",emptyCart:"سلتك فارغة حاليًا.",emptyWish:"لم تضف منتجات للمفضلة بعد.",qty:"الكمية",remove:"حذف",checkout:"الدفع الإلكتروني غير مفعّل بعد",continueShop:"متابعة التصفح",cartNote:"السلة الحالية على هذا الجهاز لأغراض المعاينة. ربطها بحسابك سيتم بعد إعداد Supabase.",
   loginTitle:"أهلًا بعودتك",loginLead:"سجّل الدخول لإدارة حسابك عندما يتم إعداد خدمة المصادقة.",email:"البريد الإلكتروني",password:"كلمة المرور",newPassword:"كلمة المرور الجديدة",confirmPassword:"تأكيد كلمة المرور",fullName:"الاسم بالكامل",signInAction:"تسجيل الدخول",createAccount:"إنشاء حساب",forgot:"نسيت كلمة المرور؟",noAccount:"ليس لديك حساب؟",hasAccount:"لديك حساب بالفعل؟",sendReset:"إرسال رابط الاستعادة",savePassword:"حفظ كلمة المرور الجديدة",accountTitle:"حسابي",signedOut:"أنت غير مسجّل الدخول.",signOut:"تسجيل الخروج",authSetup:"تسجيل الدخول غير مفعّل بعد. أكمل إعداد Supabase في ملف assets/supabase-config.js ثم فعّل سياسات قاعدة البيانات.",authError:"تعذّر إكمال الطلب. راجع الإعدادات وحاول مرة أخرى.",signupSent:"إذا كان إعداد Supabase صحيحًا، راجع بريدك لتأكيد الحساب.",resetSent:"إذا كان البريد مسجلًا، ستصلك رسالة استعادة.",passwordUpdated:"تم تحديث كلمة المرور. يمكنك تسجيل الدخول الآن.",loginSuccess:"تم تسجيل الدخول.",setupTitle:"قبل تفعيل الحسابات",setupBody:"أضف رابط مشروع Supabase ومفتاح anon/public في ملف الإعدادات. لا تستخدم service_role key في المتصفح.",catalogTitle:"المنتجات",demoLabel:"نموذج تجريبي",productLaptop:"لابتوب — نموذج تجريبي",productCamera:"كاميرا مراقبة — نموذج تجريبي",productPos:"نظام نقاط بيع — نموذج تجريبي",productNetwork:"معدات شبكات — نموذج تجريبي",productErp:"حلول برمجية وERP — نموذج تجريبي",productSupport:"خدمات دعم فني — نموذج تجريبي",productDesc:"سيتم استبدال بيانات المثال بمنتجاتك وأسعارك وصورك الفعلية من لوحة الإدارة عند تفعيل المتجر.",accountLead:"بيانات حسابك وحالة تسجيل الدخول.",emailConfirm:"قد يطلب منك تأكيد البريد الإلكتروني قبل تسجيل الدخول."
  },
  en:{
-  titles:{store:"Store Preview",login:"Sign in",register:"Create account",account:"My account",cart:"Shopping cart",wishlist:"Wishlist","reset-password":"Reset password"},
+  titles:{store:"Store Preview",checkout:"Demo checkout",login:"Sign in",register:"Create account",account:"My account",cart:"Shopping cart",wishlist:"Wishlist","reset-password":"Reset password"},
   shop:"Store",signIn:"Sign in",account:"Account",cart:"Cart",wishlist:"Wishlist",
   eyebrow:"E-commerce preparation",storeTitle:"WonderTech Store — Ready to Build",storeLead:"This is a catalog and browsing preview only. Items are samples, not actual stock or sale prices.",
   demo:"Demo preview",priceOnRequest:"Price on request",addCart:"Add to cart",addWish:"Add to wishlist",removeWish:"Remove from wishlist",viewCart:"View cart",emptyCart:"Your cart is empty.",emptyWish:"Your wishlist is empty.",qty:"Quantity",remove:"Remove",checkout:"Online checkout is not enabled yet",continueShop:"Continue browsing",cartNote:"The current cart is stored on this device for preview purposes. Account syncing will follow Supabase setup.",
@@ -162,13 +162,15 @@ const SHOP_COPY={
  }
 };
 const SHOP_PRODUCTS=[
- {id:"demo-laptop",key:"productLaptop",icon:"laptop"},
- {id:"demo-camera",key:"productCamera",icon:"camera"},
- {id:"demo-pos",key:"productPos",icon:"monitor"},
- {id:"demo-network",key:"productNetwork",icon:"network"},
- {id:"demo-erp",key:"productErp",icon:"layers"},
- {id:"demo-support",key:"productSupport",icon:"headphones"}
+ {id:"demo-laptop",key:"productLaptop",icon:"laptop",price:18500},
+ {id:"demo-camera",key:"productCamera",icon:"camera",price:1450},
+ {id:"demo-pos",key:"productPos",icon:"monitor",price:8900},
+ {id:"demo-network",key:"productNetwork",icon:"network",price:2350},
+ {id:"demo-erp",key:"productErp",icon:"layers",price:500},
+ {id:"demo-support",key:"productSupport",icon:"headphones",price:750}
 ];
+function money(v){return new Intl.NumberFormat(L==="ar"?"ar-EG":"en-EG",{style:"currency",currency:"EGP",maximumFractionDigits:0}).format(v)}
+function cartTotal(){return cartItems().reduce((s,x)=>s+(SHOP_PRODUCTS.find(p=>p.id===x.id)?.price||0)*x.qty,0)}
 let supabaseClient=null,authUser=null,authMessage="";
 function initSupabase(){
  const c=window.WONDERTECH_SUPABASE_CONFIG||{};
@@ -188,7 +190,7 @@ function cartItems(){return readList("wt-cart").filter(x=>SHOP_PRODUCTS.some(p=>
 function wishItems(){return readList("wt-wishlist").filter(id=>SHOP_PRODUCTS.some(p=>p.id===id))}
 function productCard(p){
  const t=shopMsg(),inWish=wishItems().includes(p.id),cart=cartItems().some(x=>x.id===p.id);
- return '<article class="box shop-product"><div class="shop-product-art" aria-hidden="true"><span>'+({laptop:"▣",camera:"◉",monitor:"▤",network:"⌘",layers:"◇",headphones:"◖"}[p.icon]||"◇")+'</span></div><span class="shop-demo">'+t.demo+'</span><h3>'+t[p.key]+'</h3><p>'+t.productDesc+'</p><div class="shop-product-bottom"><b>'+t.priceOnRequest+'</b><div class="shop-card-actions"><button class="btn shop-small" data-add-cart="'+p.id+'">'+(cart?t.viewCart:t.addCart)+'</button><button class="icon-action" aria-label="'+(inWish?t.removeWish:t.addWish)+'" title="'+(inWish?t.removeWish:t.addWish)+'" data-toggle-wish="'+p.id+'">'+(inWish?"♥":"♡")+'</button></div></div></article>';
+ return '<article class="box shop-product"><div class="shop-product-art" aria-hidden="true"><span>'+({laptop:"▣",camera:"◉",monitor:"▤",network:"⌘",layers:"◇",headphones:"◖"}[p.icon]||"◇")+'</span></div><span class="shop-demo">'+t.demo+'</span><h3>'+t[p.key]+'</h3><p>'+t.productDesc+'</p><div class="shop-product-bottom"><b>'+money(p.price)+'</b><small class="demo-price">'+(L==="ar"?"سعر تجريبي":"Demo price")+'</small><div class="shop-card-actions"><button class="btn shop-small" data-add-cart="'+p.id+'">'+(cart?t.viewCart:t.addCart)+'</button><button class="icon-action" aria-label="'+(inWish?t.removeWish:t.addWish)+'" title="'+(inWish?t.removeWish:t.addWish)+'" data-toggle-wish="'+p.id+'">'+(inWish?"♥":"♡")+'</button></div></div></article>';
 }
 function shopPage(){
  const t=shopMsg();
@@ -214,7 +216,12 @@ function accountPage(){
 function cartPage(){
  const t=shopMsg(),items=cartItems();
  if(!items.length)return '<section class="page-head"><div class="w"><h1>'+t.cart+'</h1><p class="sub">'+t.emptyCart+'</p><a class="btn" href="#/store">'+t.continueShop+'</a></div></section>';
- return '<section class="page-head"><div class="w"><h1>'+t.cart+'</h1><p class="sub">'+t.cartNote+'</p></div></section><section class="s"><div class="w"><div class="grid">'+items.map(item=>{const p=SHOP_PRODUCTS.find(p=>p.id===item.id);return '<article class="box cart-row"><div><h3>'+t[p.key]+'</h3><p>'+t.priceOnRequest+'</p><label>'+t.qty+' <input class="cart-qty" type="number" min="1" max="99" value="'+item.qty+'" data-cart-qty="'+item.id+'"></label></div><button class="btn ghost" data-remove-cart="'+item.id+'">'+t.remove+'</button></article>'}).join("")+'</div><p class="checkout-note">'+t.checkout+'</p><button class="btn" disabled aria-disabled="true">'+t.checkout+'</button><p><a href="#/store">'+t.continueShop+'</a></p></div></section>';
+ return '<section class="page-head"><div class="w"><h1>'+t.cart+'</h1><p class="sub">'+t.cartNote+'</p></div></section><section class="s"><div class="w"><div class="grid">'+items.map(item=>{const p=SHOP_PRODUCTS.find(p=>p.id===item.id);return '<article class="box cart-row"><div><h3>'+t[p.key]+'</h3><p>'+money(p.price)+" × "+item.qty+'</p><label>'+t.qty+' <input class="cart-qty" type="number" min="1" max="99" value="'+item.qty+'" data-cart-qty="'+item.id+'"></label></div><button class="btn ghost" data-remove-cart="'+item.id+'">'+t.remove+'</button></article>'}).join("")+'</div><div class="cart-total"><span>'+(L==="ar"?"الإجمالي التجريبي":"Demo total")+'</span><strong>'+money(cartTotal())+'</strong></div><p class="checkout-note">'+t.checkout+'</p><a class="btn" href="#/checkout">'+(L==="ar"?"تجربة إتمام الطلب":"Try demo checkout")+'</a><p><a href="#/store">'+t.continueShop+'</a></p></div></section>';
+}
+function checkoutPage(){
+ const t=shopMsg(),items=cartItems();
+ if(!items.length)return '<section class="page-head"><div class="w"><h1>'+(L==="ar"?"إتمام الطلب":"Checkout")+'</h1><p class="sub">'+t.emptyCart+'</p><a class="btn" href="#/store">'+t.continueShop+'</a></div></section>';
+ return '<section class="page-head"><div class="w"><h1>'+(L==="ar"?"إتمام طلب تجريبي":"Demo checkout")+'</h1><p class="sub">'+(L==="ar"?"تجربة فقط — لن يتم تحصيل أموال أو إنشاء طلب حقيقي.":"Demo only — no money will be charged and no real order will be created.")+'</p></div></section><section class="s"><div class="w"><div class="box auth-card"><div class="cart-total"><span>'+(L==="ar"?"الإجمالي":"Total")+'</span><strong>'+money(cartTotal())+'</strong></div><form id="demo-checkout-form"><label for="demo-name">'+(L==="ar"?"الاسم بالكامل":"Full name")+'</label><input id="demo-name" autocomplete="name" required maxlength="100"><label for="demo-phone">'+(L==="ar"?"رقم الهاتف":"Phone number")+'</label><input id="demo-phone" autocomplete="tel" required maxlength="30"><label for="demo-address">'+(L==="ar"?"عنوان التوصيل":"Delivery address")+'</label><textarea id="demo-address" required maxlength="300"></textarea><p class="auth-notice">'+(L==="ar"?"لا تدخل بيانات بطاقة الدفع؛ الدفع الحقيقي غير مفعّل.":"Do not enter card details; real payment is not enabled.")+'</p><p id="demo-checkout-message" class="form-message" role="status" aria-live="polite"></p><button class="btn" type="submit">'+(L==="ar"?"تأكيد الطلب التجريبي":"Place demo order")+'</button></form></div></div></section>';
 }
 function wishlistPage(){
  const t=shopMsg(),ids=wishItems(),products=SHOP_PRODUCTS.filter(p=>ids.includes(p.id));
@@ -225,6 +232,7 @@ function attachShopHandlers(){
  document.querySelectorAll("[data-toggle-wish]").forEach(b=>b.onclick=()=>{const id=b.dataset.toggleWish,items=wishItems();saveList("wt-wishlist",items.includes(id)?items.filter(x=>x!==id):[...items,id]);render();});
  document.querySelectorAll("[data-remove-cart]").forEach(b=>b.onclick=()=>{saveList("wt-cart",cartItems().filter(x=>x.id!==b.dataset.removeCart));render();});
  document.querySelectorAll("[data-cart-qty]").forEach(i=>i.onchange=()=>{const q=Math.max(1,Math.min(99,parseInt(i.value,10)||1));saveList("wt-cart",cartItems().map(x=>x.id===i.dataset.cartQty?{...x,qty:q}:x));render();});
+ const demoForm=$("#demo-checkout-form");if(demoForm)demoForm.onsubmit=e=>{e.preventDefault();const orders=readList("wt-demo-orders");orders.push({name:$("#demo-name").value.trim(),phone:$("#demo-phone").value.trim(),address:$("#demo-address").value.trim(),items:cartItems(),total:cartTotal(),demo:true,createdAt:new Date().toISOString()});saveList("wt-demo-orders",orders);saveList("wt-cart",[]);$("#demo-checkout-message").textContent=L==="ar"?"تم حفظ تجربة الطلب على هذا الجهاز فقط؛ لم يتم الدفع أو إنشاء طلب حقيقي.":"Demo checkout saved on this device only; no payment or real order was created.";demoForm.querySelector("button").disabled=true;};
  const out=$("#sign-out");if(out)out.onclick=async()=>{if(!supabaseClient){authMessage=shopMsg().authSetup;render();return}const {error}=await supabaseClient.auth.signOut();authMessage=error?shopMsg().authError:"";authUser=null;render();};
  const form=$("#auth-form");if(form)form.onsubmit=async e=>{
   e.preventDefault();const t=shopMsg(),msg=$("#auth-message");const email=$("#auth-email")?.value.trim()||"";
@@ -258,11 +266,11 @@ function attachShopHandlers(){
 
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const el=e.target,v=+el.dataset.v;let st=null;const f=ts=>{st=st||ts;const p=Math.min((ts-st)/1200,1);el.textContent=Math.round(v*p);if(p<1)requestAnimationFrame(f)};requestAnimationFrame(f);io.unobserve(el)}));
 function render(){
- const t=D[L],r=(location.hash.replace("#/","")||"home"),p=(R.includes(r)||["store","login","register","account","cart","wishlist","reset-password"].includes(r))?r:"home";
+ const t=D[L],r=(location.hash.replace("#/","")||"home"),p=(R.includes(r)||["store","checkout","login","register","account","cart","wishlist","reset-password"].includes(r))?r:"home";
  document.documentElement.lang=L;document.documentElement.dir=L==="ar"?"rtl":"ltr";
  $("#nav").innerHTML=R.map(k=>`<a href="#/${k}" class="${k===p?"on":""}">${t.nav[k]}</a>`).join("");
  $("#lg").textContent=t.lang;$("#mb").textContent=t.menu;
- sc=0;$("#app").innerHTML=(p==="store"?shopPage():p==="login"?loginPage():p==="register"?loginPage(true):p==="reset-password"?loginPage(false,true):p==="account"?accountPage():p==="cart"?cartPage():p==="wishlist"?wishlistPage():P[p](t));
+ sc=0;$("#app").innerHTML=(p==="store"?shopPage():p==="checkout"?checkoutPage():p==="login"?loginPage():p==="register"?loginPage(true):p==="reset-password"?loginPage(false,true):p==="account"?accountPage():p==="cart"?cartPage():p==="wishlist"?wishlistPage():P[p](t));
  document.querySelectorAll(".cnt").forEach(e=>{if(matchMedia("(prefers-reduced-motion:reduce)").matches)e.textContent=e.dataset.v;else io.observe(e)});
  $("#fab").href=wa();$("#fab").target="_blank";$("#fab").textContent=t.wa;
  document.querySelectorAll(".lg").forEach(e=>e.src=ARCS);
