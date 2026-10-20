@@ -145,20 +145,133 @@ projects:t=>head(t.prT,t.prS)+sec(`<div class="empty">${t.prE}</div>`)+clients(t
 why:t=>head(t.whyT,t.whyS)+sec(why(t))+tms(t)+band(t),
 contact:t=>head(t.ctT,t.ctS)+sec(`<div class="cols"><div><label for="n">${t.fn}</label><input id="n"><label for="c">${t.fc}</label><input id="c"><label for="q">${t.fq}</label><textarea id="q" rows="4"></textarea><button class="btn wa" id="go">${t.send}</button></div><div>${CFG.people.map(p=>`<div class="ci"><span>${p[L]}</span><div class="ls"><a dir="ltr" href="tel:${p.tel}"><b>${p.tel}</b></a><a target="_blank" rel="noopener" href="https://wa.me/2${p.tel}">${L==="ar"?"واتساب":"WhatsApp"}</a></div></div>`).join("")}<div class="ci"><span>${t.cI.address}</span><a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(CFG.address.en)}"><b>${CFG.address[L]}</b></a></div>${["email","hours"].map(k=>CFG[k]?`<div class="ci"><span>${t.cI[k]}</span><b dir="ltr">${CFG[k]}</b></div>`:"").join("")}${["facebook","instagram","linkedin"].map(k=>CFG[k]?`<div class="ci"><span>${k}</span><a href="${CFG[k]}" target="_blank" rel="noopener">${CFG[k]}</a></div>`:"").join("")}</div></div>`)+faq(t)};
 
+const SHOP_COPY={
+ ar:{
+  titles:{store:"المتجر التجريبي",login:"تسجيل الدخول",register:"إنشاء حساب",account:"حسابي",cart:"سلة التسوق",wishlist:"المفضلة","reset-password":"استعادة كلمة المرور"},
+  shop:"المتجر",signIn:"دخول",account:"حسابي",cart:"السلة",wishlist:"المفضلة",
+  eyebrow:"تجهيز للمتجر الإلكتروني",storeTitle:"متجر WonderTech — جاهز للتطوير",storeLead:"هذه معاينة للكتالوج وتجربة التصفح فقط. المنتجات المعروضة نماذج وليست مخزونًا أو أسعار بيع فعلية.",
+  demo:"معاينة تجريبية",priceOnRequest:"السعر عند الطلب",addCart:"أضف للسلة",addWish:"أضف للمفضلة",removeWish:"إزالة من المفضلة",viewCart:"عرض السلة",emptyCart:"سلتك فارغة حاليًا.",emptyWish:"لم تضف منتجات للمفضلة بعد.",qty:"الكمية",remove:"حذف",checkout:"الدفع الإلكتروني غير مفعّل بعد",continueShop:"متابعة التصفح",cartNote:"السلة الحالية على هذا الجهاز لأغراض المعاينة. ربطها بحسابك سيتم بعد إعداد Supabase.",
+  loginTitle:"أهلًا بعودتك",loginLead:"سجّل الدخول لإدارة حسابك عندما يتم إعداد خدمة المصادقة.",email:"البريد الإلكتروني",password:"كلمة المرور",newPassword:"كلمة المرور الجديدة",confirmPassword:"تأكيد كلمة المرور",fullName:"الاسم بالكامل",signInAction:"تسجيل الدخول",createAccount:"إنشاء حساب",forgot:"نسيت كلمة المرور؟",noAccount:"ليس لديك حساب؟",hasAccount:"لديك حساب بالفعل؟",sendReset:"إرسال رابط الاستعادة",savePassword:"حفظ كلمة المرور الجديدة",accountTitle:"حسابي",signedOut:"أنت غير مسجّل الدخول.",signOut:"تسجيل الخروج",authSetup:"تسجيل الدخول غير مفعّل بعد. أكمل إعداد Supabase في ملف assets/supabase-config.js ثم فعّل سياسات قاعدة البيانات.",authError:"تعذّر إكمال الطلب. راجع الإعدادات وحاول مرة أخرى.",signupSent:"إذا كان إعداد Supabase صحيحًا، راجع بريدك لتأكيد الحساب.",resetSent:"إذا كان البريد مسجلًا، ستصلك رسالة استعادة.",passwordUpdated:"تم تحديث كلمة المرور. يمكنك تسجيل الدخول الآن.",loginSuccess:"تم تسجيل الدخول.",setupTitle:"قبل تفعيل الحسابات",setupBody:"أضف رابط مشروع Supabase ومفتاح anon/public في ملف الإعدادات. لا تستخدم service_role key في المتصفح.",catalogTitle:"المنتجات",demoLabel:"نموذج تجريبي",productLaptop:"لابتوب — نموذج تجريبي",productCamera:"كاميرا مراقبة — نموذج تجريبي",productPos:"نظام نقاط بيع — نموذج تجريبي",productNetwork:"معدات شبكات — نموذج تجريبي",productErp:"حلول برمجية وERP — نموذج تجريبي",productSupport:"خدمات دعم فني — نموذج تجريبي",productDesc:"سيتم استبدال بيانات المثال بمنتجاتك وأسعارك وصورك الفعلية من لوحة الإدارة عند تفعيل المتجر.",accountLead:"بيانات حسابك وحالة تسجيل الدخول.",emailConfirm:"قد يطلب منك تأكيد البريد الإلكتروني قبل تسجيل الدخول."
+ },
+ en:{
+  titles:{store:"Store Preview",login:"Sign in",register:"Create account",account:"My account",cart:"Shopping cart",wishlist:"Wishlist","reset-password":"Reset password"},
+  shop:"Store",signIn:"Sign in",account:"Account",cart:"Cart",wishlist:"Wishlist",
+  eyebrow:"E-commerce preparation",storeTitle:"WonderTech Store — Ready to Build",storeLead:"This is a catalog and browsing preview only. Items are samples, not actual stock or sale prices.",
+  demo:"Demo preview",priceOnRequest:"Price on request",addCart:"Add to cart",addWish:"Add to wishlist",removeWish:"Remove from wishlist",viewCart:"View cart",emptyCart:"Your cart is empty.",emptyWish:"Your wishlist is empty.",qty:"Quantity",remove:"Remove",checkout:"Online checkout is not enabled yet",continueShop:"Continue browsing",cartNote:"The current cart is stored on this device for preview purposes. Account syncing will follow Supabase setup.",
+  loginTitle:"Welcome back",loginLead:"Sign in to manage your account once authentication is configured.",email:"Email address",password:"Password",newPassword:"New password",confirmPassword:"Confirm password",fullName:"Full name",signInAction:"Sign in",createAccount:"Create account",forgot:"Forgot password?",noAccount:"Don't have an account?",hasAccount:"Already have an account?",sendReset:"Send reset link",savePassword:"Save new password",accountTitle:"My account",signedOut:"You are not signed in.",signOut:"Sign out",authSetup:"Sign-in is not enabled yet. Complete Supabase setup in assets/supabase-config.js and enable database policies.",authError:"The request could not be completed. Check the setup and try again.",signupSent:"If Supabase is configured correctly, check your email to confirm your account.",resetSent:"If the email is registered, a reset message will be sent.",passwordUpdated:"Password updated. You can sign in now.",loginSuccess:"You are signed in.",setupTitle:"Before enabling accounts",setupBody:"Add your Supabase project URL and anon/public key to the config file. Never use the service_role key in the browser.",catalogTitle:"Products",demoLabel:"Demo item",productLaptop:"Laptop — demo item",productCamera:"Security camera — demo item",productPos:"POS system — demo item",productNetwork:"Networking equipment — demo item",productErp:"Software & ERP — demo item",productSupport:"Technical support — demo item",productDesc:"Example data will be replaced by your real products, prices, and images when the store admin is enabled.",accountLead:"Your account details and sign-in status.",emailConfirm:"You may need to confirm your email before signing in."
+ }
+};
+const SHOP_PRODUCTS=[
+ {id:"demo-laptop",key:"productLaptop",icon:"laptop"},
+ {id:"demo-camera",key:"productCamera",icon:"camera"},
+ {id:"demo-pos",key:"productPos",icon:"monitor"},
+ {id:"demo-network",key:"productNetwork",icon:"network"},
+ {id:"demo-erp",key:"productErp",icon:"layers"},
+ {id:"demo-support",key:"productSupport",icon:"headphones"}
+];
+let supabaseClient=null,authUser=null,authMessage="";
+function initSupabase(){
+ const c=window.WONDERTECH_SUPABASE_CONFIG||{};
+ if(!window.supabase||!c.url||!c.anonKey||c.url.includes("YOUR-PROJECT")||c.anonKey.includes("YOUR_SUPABASE"))return null;
+ try{return window.supabase.createClient(c.url,c.anonKey)}catch(e){console.error("Supabase client setup failed",e);return null}
+}
+supabaseClient=initSupabase();
+if(supabaseClient){
+ supabaseClient.auth.getSession().then(({data})=>{authUser=data.session?.user||null;render();}).catch(()=>{});
+ supabaseClient.auth.onAuthStateChange((_event,session)=>{authUser=session?.user||null;});
+}
+function shopMsg(){return SHOP_COPY[L];}
+function safeText(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+function readList(key){try{const v=JSON.parse(localStorage.getItem(key)||"[]");return Array.isArray(v)?v:[]}catch(e){return[]}}
+function saveList(key,value){try{localStorage.setItem(key,JSON.stringify(value));return true}catch(e){return false}}
+function cartItems(){return readList("wt-cart").filter(x=>SHOP_PRODUCTS.some(p=>p.id===x.id)&&Number.isInteger(x.qty)&&x.qty>0)}
+function wishItems(){return readList("wt-wishlist").filter(id=>SHOP_PRODUCTS.some(p=>p.id===id))}
+function productCard(p){
+ const t=shopMsg(),inWish=wishItems().includes(p.id),cart=cartItems().some(x=>x.id===p.id);
+ return '<article class="box shop-product"><div class="shop-product-art" aria-hidden="true"><span>'+({laptop:"▣",camera:"◉",monitor:"▤",network:"⌘",layers:"◇",headphones:"◖"}[p.icon]||"◇")+'</span></div><span class="shop-demo">'+t.demo+'</span><h3>'+t[p.key]+'</h3><p>'+t.productDesc+'</p><div class="shop-product-bottom"><b>'+t.priceOnRequest+'</b><div class="shop-card-actions"><button class="btn shop-small" data-add-cart="'+p.id+'">'+(cart?t.viewCart:t.addCart)+'</button><button class="icon-action" aria-label="'+(inWish?t.removeWish:t.addWish)+'" title="'+(inWish?t.removeWish:t.addWish)+'" data-toggle-wish="'+p.id+'">'+(inWish?"♥":"♡")+'</button></div></div></article>';
+}
+function shopPage(){
+ const t=shopMsg();
+ return '<section class="page-head"><div class="w"><p class="tag">'+t.eyebrow+'</p><h1>'+t.storeTitle+'</h1><p class="sub">'+t.storeLead+'</p><span class="shop-demo">'+t.demo+'</span></div></section><section class="s"><div class="w"><h2>'+t.catalogTitle+'</h2><div class="grid shop-grid">'+SHOP_PRODUCTS.map(productCard).join("")+'</div></div></section>';
+}
+function loginPage(register=false,reset=false){
+ const t=shopMsg(),resetNewPassword=reset&&new URLSearchParams(location.search).get("auth")==="reset";
+ const title=reset?(resetNewPassword?t.titles["reset-password"]:t.titles["reset-password"]):(register?t.titles.register:t.loginTitle);
+ let fields="";
+ if(register)fields='<label for="auth-name">'+t.fullName+'</label><input id="auth-name" name="name" autocomplete="name" required>';
+ if(reset&&!resetNewPassword)fields+='<label for="auth-email">'+t.email+'</label><input id="auth-email" name="email" type="email" autocomplete="email" required>';
+ if(!reset)fields+='<label for="auth-email">'+t.email+'</label><input id="auth-email" name="email" type="email" autocomplete="email" required>';
+ if(!reset)fields+='<label for="auth-password">'+t.password+'</label><input id="auth-password" name="password" type="password" autocomplete="'+(register?"new-password":"current-password")+'" minlength="8" required>';
+ if(resetNewPassword)fields+='<label for="auth-password">'+t.newPassword+'</label><input id="auth-password" name="password" type="password" autocomplete="new-password" minlength="8" required><label for="auth-confirm">'+t.confirmPassword+'</label><input id="auth-confirm" name="confirm" type="password" autocomplete="new-password" minlength="8" required>';
+ if(register)fields+='<label for="auth-confirm">'+t.confirmPassword+'</label><input id="auth-confirm" name="confirm" type="password" autocomplete="new-password" minlength="8" required>';
+ return '<section class="page-head"><div class="w"><p class="tag">'+t.eyebrow+'</p><h1>'+title+'</h1><p class="sub">'+t.loginLead+'</p></div></section><section class="s"><div class="w"><div class="box auth-card">'+(!supabaseClient?'<div class="auth-notice">'+t.authSetup+'</div>':'')+'<form id="auth-form">'+fields+'<p id="auth-message" class="form-message" role="status" aria-live="polite">'+safeText(authMessage)+'</p><button class="btn" type="submit">'+(reset?(resetNewPassword?t.savePassword:t.sendReset):(register?t.createAccount:t.signInAction))+'</button></form><div class="auth-links">'+(reset?'<a href="#/login">'+t.signInAction+'</a>':(register?'<a href="#/login">'+t.hasAccount+'</a>':'<a href="#/reset-password">'+t.forgot+'</a><a href="#/register">'+t.noAccount+'</a>'))+'</div></div></div></section>';
+}
+function accountPage(){
+ const t=shopMsg();
+ if(!authUser)return '<section class="page-head"><div class="w"><h1>'+t.accountTitle+'</h1><p class="sub">'+t.signedOut+'</p><a class="btn" href="#/login">'+t.signInAction+'</a></div></section>';
+ return '<section class="page-head"><div class="w"><h1>'+t.accountTitle+'</h1><p class="sub">'+t.accountLead+'</p></div></section><section class="s"><div class="w"><div class="box auth-card"><p><b>'+t.email+':</b> '+safeText(authUser.email)+'</p><p><b>ID:</b> '+safeText(authUser.id)+'</p><p class="form-message">'+safeText(authMessage)+'</p><button class="btn" id="sign-out">'+t.signOut+'</button></div></div></section>';
+}
+function cartPage(){
+ const t=shopMsg(),items=cartItems();
+ if(!items.length)return '<section class="page-head"><div class="w"><h1>'+t.cart+'</h1><p class="sub">'+t.emptyCart+'</p><a class="btn" href="#/store">'+t.continueShop+'</a></div></section>';
+ return '<section class="page-head"><div class="w"><h1>'+t.cart+'</h1><p class="sub">'+t.cartNote+'</p></div></section><section class="s"><div class="w"><div class="grid">'+items.map(item=>{const p=SHOP_PRODUCTS.find(p=>p.id===item.id);return '<article class="box cart-row"><div><h3>'+t[p.key]+'</h3><p>'+t.priceOnRequest+'</p><label>'+t.qty+' <input class="cart-qty" type="number" min="1" max="99" value="'+item.qty+'" data-cart-qty="'+item.id+'"></label></div><button class="btn ghost" data-remove-cart="'+item.id+'">'+t.remove+'</button></article>'}).join("")+'</div><p class="checkout-note">'+t.checkout+'</p><button class="btn" disabled aria-disabled="true">'+t.checkout+'</button><p><a href="#/store">'+t.continueShop+'</a></p></div></section>';
+}
+function wishlistPage(){
+ const t=shopMsg(),ids=wishItems(),products=SHOP_PRODUCTS.filter(p=>ids.includes(p.id));
+ return '<section class="page-head"><div class="w"><h1>'+t.wishlist+'</h1><p class="sub">'+(products.length?t.demo:t.emptyWish)+'</p></div></section><section class="s"><div class="w"><div class="grid shop-grid">'+products.map(productCard).join("")+'</div><a class="btn" href="#/store">'+t.continueShop+'</a></div></section>';
+}
+function attachShopHandlers(){
+ document.querySelectorAll("[data-add-cart]").forEach(b=>b.onclick=()=>{const id=b.dataset.addCart;const current=cartItems();if(current.some(x=>x.id===id)){location.hash="#/cart";return}current.push({id,qty:1});saveList("wt-cart",current);authMessage="";render();});
+ document.querySelectorAll("[data-toggle-wish]").forEach(b=>b.onclick=()=>{const id=b.dataset.toggleWish,items=wishItems();saveList("wt-wishlist",items.includes(id)?items.filter(x=>x!==id):[...items,id]);render();});
+ document.querySelectorAll("[data-remove-cart]").forEach(b=>b.onclick=()=>{saveList("wt-cart",cartItems().filter(x=>x.id!==b.dataset.removeCart));render();});
+ document.querySelectorAll("[data-cart-qty]").forEach(i=>i.onchange=()=>{const q=Math.max(1,Math.min(99,parseInt(i.value,10)||1));saveList("wt-cart",cartItems().map(x=>x.id===i.dataset.cartQty?{...x,qty:q}:x));render();});
+ const out=$("#sign-out");if(out)out.onclick=async()=>{if(!supabaseClient){authMessage=shopMsg().authSetup;render();return}const {error}=await supabaseClient.auth.signOut();authMessage=error?shopMsg().authError:"";authUser=null;render();};
+ const form=$("#auth-form");if(form)form.onsubmit=async e=>{
+  e.preventDefault();const t=shopMsg(),msg=$("#auth-message");const email=$("#auth-email")?.value.trim()||"";
+  if(!supabaseClient){msg.textContent=t.authSetup;return}
+  const password=$("#auth-password")?.value||"";
+  try{
+   let result;
+   if(location.hash==="#/register"){
+    const name=$("#auth-name")?.value.trim()||"",confirm=$("#auth-confirm")?.value||"";
+    if(password!==confirm){msg.textContent=L==="ar"?"كلمتا المرور غير متطابقتين.":"Passwords do not match.";return}
+    result=await supabaseClient.auth.signUp({email,password,options:{data:{full_name:name}}});
+    if(!result.error){authUser=result.data.session?.user||null;msg.textContent=t.signupSent;}
+   }else if(location.hash==="#/reset-password"){
+    if(new URLSearchParams(location.search).get("auth")==="reset"){
+     const confirm=$("#auth-confirm")?.value||"";
+     if(password!==confirm){msg.textContent=L==="ar"?"كلمتا المرور غير متطابقتين.":"Passwords do not match.";return}
+     result=await supabaseClient.auth.updateUser({password});
+     if(!result.error)msg.textContent=t.passwordUpdated;
+    }else{
+     result=await supabaseClient.auth.resetPasswordForEmail(email,{redirectTo:location.origin+location.pathname+"?auth=reset#/reset-password"});
+     if(!result.error)msg.textContent=t.resetSent;
+    }
+   }else{
+    result=await supabaseClient.auth.signInWithPassword({email,password});
+    if(!result.error){authUser=result.data.user;msg.textContent=t.loginSuccess;setTimeout(()=>{location.hash="#/account";},300);}
+   }
+   if(result.error)msg.textContent=t.authError;
+  }catch(err){msg.textContent=t.authError;}
+ };
+}
+
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const el=e.target,v=+el.dataset.v;let st=null;const f=ts=>{st=st||ts;const p=Math.min((ts-st)/1200,1);el.textContent=Math.round(v*p);if(p<1)requestAnimationFrame(f)};requestAnimationFrame(f);io.unobserve(el)}));
 function render(){
- const t=D[L],r=(location.hash.replace("#/","")||"home"),p=R.includes(r)?r:"home";
+ const t=D[L],r=(location.hash.replace("#/","")||"home"),p=(R.includes(r)||["store","login","register","account","cart","wishlist","reset-password"].includes(r))?r:"home";
  document.documentElement.lang=L;document.documentElement.dir=L==="ar"?"rtl":"ltr";
  $("#nav").innerHTML=R.map(k=>`<a href="#/${k}" class="${k===p?"on":""}">${t.nav[k]}</a>`).join("");
  $("#lg").textContent=t.lang;$("#mb").textContent=t.menu;
- sc=0;$("#app").innerHTML=P[p](t);
+ sc=0;$("#app").innerHTML=(p==="store"?shopPage():p==="login"?loginPage():p==="register"?loginPage(true):p==="reset-password"?loginPage(false,true):p==="account"?accountPage():p==="cart"?cartPage():p==="wishlist"?wishlistPage():P[p](t));
  document.querySelectorAll(".cnt").forEach(e=>{if(matchMedia("(prefers-reduced-motion:reduce)").matches)e.textContent=e.dataset.v;else io.observe(e)});
  $("#fab").href=wa();$("#fab").target="_blank";$("#fab").textContent=t.wa;
  document.querySelectorAll(".lg").forEach(e=>e.src=ARCS);
  $("#fl").innerHTML=`<a class="logo" href="#/home"><img class="lg" src="${ARCS}" alt=""><b dir="ltr">WONDER<i>TECH</i></b></a><p class="sw">${t.sw}</p><p>© 2026 WONDERTECH. ${t.copy}</p>`;
  $("#fm").innerHTML=CFG.people.map(p=>`<p style="margin:0 0 10px">${p[L]}<br><a dir="ltr" href="tel:${p.tel}">${p.tel}</a></p>`).join("")+`<p>${CFG.address[L]}</p>`;
  $("#fr").innerHTML=R.map(k=>`<a href="#/${k}">${t.nav[k]}</a>`).join("");
- document.title="WONDERTECH | "+t.nav[p];
+ document.title="WONDERTECH | "+(shopMsg().titles[p]||t.nav[p]||"");
+ $("#shop-actions").innerHTML=`<a href="#/store" class="shop-nav-link">${shopMsg().shop}</a><a href="#/${authUser?"account":"login"}" class="shop-nav-link">${authUser?shopMsg().account:shopMsg().signIn}</a><a href="#/wishlist" class="shop-nav-link">${shopMsg().wishlist}</a><a href="#/cart" class="shop-nav-link">${shopMsg().cart} <span id="cart-count">${cartItems().reduce((n,x)=>n+x.qty,0)}</span></a>`;
+ attachShopHandlers();
  const g=$("#go");if(g)g.onclick=()=>{const m=`${t.fn}: ${$("#n").value}\n${t.fc}: ${$("#c").value}\n${$("#q").value}`;window.open(wa(m),"_blank","noopener,noreferrer")};
  $("#nav").classList.remove("open");$("#mb").setAttribute("aria-expanded","false");
 }
