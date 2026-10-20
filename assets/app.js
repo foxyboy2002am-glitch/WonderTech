@@ -177,7 +177,7 @@ function initSupabase(){
 }
 supabaseClient=initSupabase();
 if(supabaseClient){
- supabaseClient.auth.getSession().then(({data})=>{authUser=data.session?.user||null;const p=location.hash.replace("#/","");if(["account","login","register"].includes(p))render();}).catch(()=>{});
+ supabaseClient.auth.getSession().then(({data})=>{authUser=data.session?.user||null;render();}).catch(()=>{});
  supabaseClient.auth.onAuthStateChange((_event,session)=>{authUser=session?.user||null;});
 }
 function shopMsg(){return SHOP_COPY[L];}
@@ -244,7 +244,7 @@ function attachShopHandlers(){
      result=await supabaseClient.auth.updateUser({password});
      if(!result.error)msg.textContent=t.passwordUpdated;
     }else{
-     result=await supabaseClient.auth.resetPasswordForEmail(email,{redirectTo:location.origin+location.pathname+"?auth=reset"});
+     result=await supabaseClient.auth.resetPasswordForEmail(email,{redirectTo:location.origin+location.pathname+"?auth=reset#/reset-password"});
      if(!result.error)msg.textContent=t.resetSent;
     }
    }else{
