@@ -285,6 +285,7 @@ function render(){
 }
 window.addEventListener("hashchange",()=>{render();scrollTo(0,0)});
 $("#lg").onclick=()=>{L=L==="ar"?"en":"ar";try{localStorage.setItem("wt-lang",L)}catch(e){}render()};
-$("#mb").onclick=()=>{const o=$("#nav").classList.toggle("open");$("#mb").setAttribute("aria-expanded",o)};
+$("#mb").onclick=()=>{const o=$("#nav").classList.toggle("open");$("#mb").setAttribute("aria-expanded",String(o))};
+$("#nav").addEventListener("click",e=>{if(e.target.closest("a")){$("#nav").classList.remove("open");$("#mb").setAttribute("aria-expanded","false")}});
 $("#syms").innerHTML=IC.map((p,i)=>`<symbol id="s${i}" viewBox="0 0 24 24"><path d="${p}"/></symbol>`).join("");
 render();
