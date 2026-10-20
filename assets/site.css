@@ -162,3 +162,24 @@ img,svg{max-width:100%}
 button:disabled{opacity:.55;cursor:not-allowed}
 @media(max-width:900px){.shop-actions{gap:4px;justify-content:center}.shop-nav-link{font-size:12px;padding:6px 7px}.hd{gap:8px}#nav{flex:initial}}
 @media(max-width:600px){.hd{height:auto;min-height:68px;flex-wrap:wrap;padding-top:8px;padding-bottom:8px}.shop-actions{order:5;width:100%;justify-content:center;padding-top:8px}.shop-nav-link{flex:1;justify-content:center}.page-head{padding:34px 0 20px}.shop-product-art{min-height:95px}}
+
+/* Lightweight client showcase: CSS-only, no carousels or scroll-bound animation */
+.cl{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr));align-items:stretch;gap:14px}
+.cl .client-logo{min-height:96px;display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;text-align:center;padding:18px 14px;border:1px solid var(--ln);border-radius:14px;background:var(--bg);color:var(--ink);box-shadow:0 4px 16px rgba(5,20,48,.04);overflow-wrap:anywhere;transition:border-color .18s ease,transform .18s ease}
+.cl .client-logo:hover{border-color:var(--bl);transform:translateY(-2px)}
+.client-feature-mark{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:9px;background:#f04b24;color:#fff;font-size:12px;font-weight:900;letter-spacing:-1px;flex-shrink:0}
+.client-feature-mark.large{width:56px;height:56px;border-radius:14px;font-size:20px}
+.partner-panel{margin-top:26px;padding:clamp(20px,4vw,34px);border-radius:18px;background:linear-gradient(120deg,#171329,#30224d);color:#fff;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.partner-panel h3{font-size:clamp(26px,4vw,36px);margin:8px 0}
+.partner-panel p{max-width:620px;margin:0;color:#e1dced}
+.partner-kicker{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.08em;color:#a9c7ff}
+.odoo-wordmark{display:inline-flex;align-items:center;gap:4px;font-size:clamp(42px,7vw,64px);font-weight:900;letter-spacing:-.08em;color:#fff;line-height:1}
+.odoo-wordmark span{font-size:.28em;color:#a1d7ff;align-self:flex-start;margin-top:.1em}
+.featured-client{margin-top:18px;padding:clamp(20px,4vw,30px);border:1px solid rgba(240,75,36,.35);border-radius:18px;background:linear-gradient(140deg,rgba(240,75,36,.07),var(--bg));}
+.featured-client-top{display:flex;align-items:center;gap:14px}
+.featured-client h3{font-size:clamp(23px,4vw,32px);margin:3px 0}
+.featured-client p{max-width:800px;color:var(--mu);line-height:1.9}
+.featured-tags{display:flex;flex-wrap:wrap;gap:8px}
+.featured-tags span{border:1px solid var(--ln);border-radius:999px;padding:6px 12px;font-size:12px;font-weight:700}
+@media(max-width:600px){.cl{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.cl .client-logo{min-height:82px;padding:12px 8px;font-size:13px}.partner-panel{gap:16px}}
+@media(prefers-reduced-motion:reduce){.cl .client-logo{transition:none}.cl .client-logo:hover{transform:none}}
