@@ -129,8 +129,10 @@ img,svg{max-width:100%}
   .pu{display:none!important}
 }
 
-/* Account and future-store foundation */
-.shop-actions{display:flex;align-items:center;gap:8px;flex-shrink:0}
+/* Account and future-store foundation: keep the store links visible on desktop and mobile */
+.hd{height:auto;min-height:76px;flex-wrap:wrap;padding-top:10px;padding-bottom:10px}
+#nav{flex:1;min-width:0}
+.shop-actions{display:flex;align-items:center;justify-content:flex-end;gap:8px;flex:0 0 100%;width:100%;order:5;padding-top:8px;border-top:1px solid rgba(43,196,255,.18)}
 .shop-nav-link{display:inline-flex;align-items:center;gap:5px;text-decoration:none;border:1px solid rgba(43,196,255,.38);border-radius:10px;padding:7px 10px;color:#fff;font-size:14px;white-space:nowrap}
 #cart-count{display:inline-grid;place-items:center;min-width:19px;height:19px;padding:0 4px;border-radius:99px;background:#2BC4FF;color:#06122A;font-size:12px;font-weight:700}
 .page-head{padding:48px 0 26px;background:linear-gradient(145deg,var(--nv),#103067);color:#fff}
@@ -158,5 +160,5 @@ img,svg{max-width:100%}
 .cart-row{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
 .cart-row input{width:85px;display:block;margin-top:5px}
 button:disabled{opacity:.55;cursor:not-allowed}
-@media(max-width:900px){.shop-actions{gap:4px}.shop-nav-link{font-size:12px;padding:6px 7px}.hd{gap:8px}}
-@media(max-width:600px){.hd{height:auto;min-height:68px;flex-wrap:wrap;padding-top:8px;padding-bottom:8px}.shop-actions{order:4;width:100%;justify-content:center}.shop-nav-link{flex:1;justify-content:center}.page-head{padding:34px 0 20px}.shop-product-art{min-height:95px}}
+@media(max-width:900px){.shop-actions{gap:4px;justify-content:center}.shop-nav-link{font-size:12px;padding:6px 7px}.hd{gap:8px}#nav{flex:initial}}
+@media(max-width:600px){.hd{height:auto;min-height:68px;flex-wrap:wrap;padding-top:8px;padding-bottom:8px}.shop-actions{order:5;width:100%;justify-content:center;padding-top:8px}.shop-nav-link{flex:1;justify-content:center}.page-head{padding:34px 0 20px}.shop-product-art{min-height:95px}}
