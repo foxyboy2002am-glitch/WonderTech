@@ -211,7 +211,8 @@ function loginPage(register=false,reset=false){
 function accountPage(){
  const t=shopMsg();
  if(!authUser)return '<section class="page-head"><div class="w"><h1>'+t.accountTitle+'</h1><p class="sub">'+t.signedOut+'</p><a class="btn" href="#/login">'+t.signInAction+'</a></div></section>';
- return '<section class="page-head"><div class="w"><h1>'+t.accountTitle+'</h1><p class="sub">'+t.accountLead+'</p></div></section><section class="s"><div class="w"><div class="box auth-card"><p><b>'+t.email+':</b> '+safeText(authUser.email)+'</p><p><b>ID:</b> '+safeText(authUser.id)+'</p><p class="form-message">'+safeText(authMessage)+'</p><button class="btn" id="sign-out">'+t.signOut+'</button></div></div></section>';
+ const accountName=authUser.user_metadata?.full_name||authUser.user_metadata?.name||authUser.email?.split("@")[0]||t.accountTitle;
+ return '<section class="page-head"><div class="w"><h1>'+t.accountTitle+'</h1><p class="sub">'+t.accountLead+'</p></div></section><section class="s"><div class="w"><div class="box auth-card"><p><b>'+(L==="ar"?"الاسم":"Name")+':</b> '+safeText(accountName)+'</p><p><b>'+t.email+':</b> '+safeText(authUser.email)+'</p><p class="form-message">'+safeText(authMessage)+'</p><button class="btn" id="sign-out">'+t.signOut+'</button></div></div></section>';
 }
 function cartPage(){
  const t=shopMsg(),items=cartItems();
@@ -278,7 +279,8 @@ function render(){
  $("#fm").innerHTML=CFG.people.map(p=>`<p style="margin:0 0 10px">${p[L]}<br><a dir="ltr" href="tel:${p.tel}">${p.tel}</a></p>`).join("")+`<p>${CFG.address[L]}</p>`;
  $("#fr").innerHTML=R.map(k=>`<a href="#/${k}">${t.nav[k]}</a>`).join("");
  document.title="WONDERTECH | "+(shopMsg().titles[p]||t.nav[p]||"");
- $("#shop-actions").innerHTML=`<a href="#/store" class="shop-nav-link">${shopMsg().shop}</a><a href="#/${authUser?"account":"login"}" class="shop-nav-link">${authUser?shopMsg().account:shopMsg().signIn}</a><a href="#/wishlist" class="shop-nav-link">${shopMsg().wishlist}</a><a href="#/cart" class="shop-nav-link">${shopMsg().cart} <span id="cart-count">${cartItems().reduce((n,x)=>n+x.qty,0)}</span></a>`;
+ const shopText=shopMsg(),cartCount=cartItems().reduce((n,x)=>n+x.qty,0),displayName=authUser?(authUser.user_metadata?.full_name||authUser.user_metadata?.name||authUser.email?.split("@")[0]||shopText.account):shopText.signIn;
+ $("#shop-actions").innerHTML=`<a href="#/store" class="shop-nav-link">${shopText.shop}</a><a href="#/${authUser?"account":"login"}" class="shop-nav-link">${safeText(displayName)}</a><a href="#/wishlist" class="shop-nav-link">${shopText.wishlist}</a><a href="#/cart" class="shop-cart-bubble" aria-label="${shopText.cart}, ${cartCount}" title="${shopText.cart}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.1 10.1a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 1.9-1.4L21 8H6"/><circle cx="10" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg><span id="cart-count" class="cart-count-badge">${cartCount}</span></a>`;
  attachShopHandlers();
  const g=$("#go");if(g)g.onclick=()=>{const m=`${t.fn}: ${$("#n").value}\n${t.fc}: ${$("#c").value}\n${$("#q").value}`;window.open(wa(m),"_blank","noopener,noreferrer")};
  $("#nav").classList.remove("open");$("#mb").setAttribute("aria-expanded","false");
