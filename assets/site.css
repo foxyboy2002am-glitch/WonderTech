@@ -249,3 +249,22 @@ button:disabled{opacity:.55;cursor:not-allowed}
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
 }
+
+
+/* Final mobile polish: disable decorative motion and stabilize client cards */
+@media(max-width:900px){
+  *,*::before,*::after{animation:none!important;scroll-behavior:auto!important}
+  .pu,.nd,.bgi,.dec{display:none!important}
+  .cam,.rec,.bar,.ln,.ty,.rc{animation:none!important;filter:none!important}
+  .scene,.dv{filter:none!important}
+  header::after{animation:none!important}
+  .s .box,.cap,header{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+}
+.cl .client-logo{flex-direction:column;flex-wrap:nowrap;align-items:center;justify-content:center;gap:10px;min-width:0;overflow:hidden}
+.client-logo-mark{flex:0 0 auto;position:relative;z-index:1;line-height:1.2;white-space:nowrap;max-width:100%;overflow:hidden}
+.cl .client-logo b{display:block;max-width:100%;text-align:center;overflow-wrap:anywhere;word-break:normal;line-height:1.45}
+@media(max-width:600px){
+  .cl .client-logo{min-height:132px;padding:14px 9px}
+  .client-logo-mark{width:52px;height:52px;font-size:15px}
+  .cl .client-logo b{font-size:12px}
+}
