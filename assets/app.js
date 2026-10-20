@@ -32,7 +32,7 @@ ind:[
 whyT:"لماذا WONDERTECH؟",whyS:"نركز على حلول عملية تعمل كل يوم.",
 why:[["حلول متكاملة","شبكات ومراقبة ونقاط بيع وERP ودعم فني من جهة واحدة."],["تركيز على التشغيل","هدفنا استمرارية عمل أنظمتك وتقليل توقفها."],["دعم فني متابع","نتابع المشكلات الفنية بعد التسليم ولا نتركها."],["حلول عملية","نختار الحل الذي يناسب نشاطك وميزانيتك."]],
 abT:"من نحن",ab:["WONDERTECH شركة متخصصة في تقديم حلول تكنولوجيا المعلومات المتكاملة للشركات والمؤسسات، من خلال توفير حلول الشبكات وأنظمة المراقبة ونقاط البيع وأنظمة ERP والدعم والصيانة الفنية.","تركز الشركة على تقديم حلول عملية ومتكاملة تساعد الشركات على تطوير بنيتها التحتية التقنية، وتحسين كفاءة التشغيل، وتوفير الدعم الفني المستمر."],
-prT:"مشاريعنا",prS:"نماذج من أعمالنا.",prE:"نضيف هنا مشاريعنا بعد اعتماد بيانات العملاء. تواصل معنا لمعرفة المزيد عن أعمالنا السابقة.",
+prT:"مشاريعنا",prS:"عملاؤنا ومشاريع نفخر بها.",prE:"",
 ctT:"تواصل معنا",ctS:"أرسل لنا احتياجك وسنرد عليك.",
 fn:"الاسم",fc:"الشركة",fq:"ما الذي تحتاجه؟",send:"أرسل عبر واتساب",
 cI:{phone:"الهاتف",email:"البريد الإلكتروني",address:"العنوان",hours:"مواعيد العمل"},
@@ -65,7 +65,7 @@ ind:[
 whyT:"Why WONDERTECH",whyS:"We focus on practical solutions that work every day.",
 why:[["Integrated solutions","Networks, surveillance, POS, ERP and support from one provider."],["Focus on uptime","Our goal is to keep your systems running and cut downtime."],["Follow-up support","We follow technical issues after delivery."],["Practical solutions","We pick what fits your business and budget."]],
 abT:"About Us",ab:["WONDERTECH is a company specialized in integrated IT solutions for companies and institutions, covering networks, surveillance systems, point of sale, ERP, and technical support and maintenance.","We focus on practical, integrated solutions that help businesses improve their technical infrastructure, raise operational efficiency and get continuous technical support."],
-prT:"Projects",prS:"Selected work.",prE:"Projects will appear here once client details are approved. Contact us to learn more about our previous work.",
+prT:"Projects",prS:"Clients and projects we are proud of.",prE:"",
 ctT:"Contact Us",ctS:"Tell us what you need and we'll get back to you.",
 fn:"Name",fc:"Company",fq:"What do you need?",send:"Send via WhatsApp",
 cI:{phone:"Phone",email:"Email",address:"Address",hours:"Working hours"},
@@ -141,7 +141,7 @@ home:t=>`<div class="hero">${bgi}${circ}<div class="w"><div><p class="tag">${t.t
 about:t=>head(t.abT,t.ab[0])+sec(`<p style="max-width:44em;margin:0">${t.ab[1]}</p>`)+stats()+sec(`<h2>${t.whyT}</h2>${why(t)}`,1)+band(t),
 services:t=>head(t.svcT,t.svcS)+sec(svc(t))+band(t),
 industries:t=>head(t.indT,t.indS)+sec(ind(t))+band(t),
-projects:t=>head(t.prT,t.prS)+sec(`<div class="empty">${t.prE}</div>`)+clients(t)+band(t),
+projects:t=>head(t.prT,t.prS)+clients(t)+band(t),
 why:t=>head(t.whyT,t.whyS)+sec(why(t))+tms(t)+band(t),
 contact:t=>head(t.ctT,t.ctS)+sec(`<div class="cols"><div><label for="n">${t.fn}</label><input id="n"><label for="c">${t.fc}</label><input id="c"><label for="q">${t.fq}</label><textarea id="q" rows="4"></textarea><button class="btn wa" id="go">${t.send}</button></div><div>${CFG.people.map(p=>`<div class="ci"><span>${p[L]}</span><div class="ls"><a dir="ltr" href="tel:${p.tel}"><b>${p.tel}</b></a><a target="_blank" rel="noopener" href="https://wa.me/2${p.tel}">${L==="ar"?"واتساب":"WhatsApp"}</a></div></div>`).join("")}<div class="ci"><span>${t.cI.address}</span><a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(CFG.address.en)}"><b>${CFG.address[L]}</b></a></div>${["email","hours"].map(k=>CFG[k]?`<div class="ci"><span>${t.cI[k]}</span><b dir="ltr">${CFG[k]}</b></div>`:"").join("")}${["facebook","instagram","linkedin"].map(k=>CFG[k]?`<div class="ci"><span>${k}</span><a href="${CFG[k]}" target="_blank" rel="noopener">${CFG[k]}</a></div>`:"").join("")}</div></div>`)+faq(t)};
 
