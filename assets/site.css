@@ -291,3 +291,14 @@ button:disabled{opacity:.55;cursor:not-allowed}
 #projects .sprite-logexco{background-position:100% 100%}
 @media(max-width:900px){#projects .cl{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}#projects .client-logo{min-height:160px;padding:12px 9px}#projects .client-logo-mark{height:90px}}
 @media(max-width:600px){#projects .cl .client-logo b{font-size:12px}#projects .client-logo-mark{height:78px}}
+
+
+/* Professional sticky cart bubble and persistent signed-in identity */
+.shop-actions{display:flex;align-items:center;gap:clamp(6px,1vw,12px);flex-wrap:nowrap}
+.shop-nav-link{white-space:nowrap;max-width:180px;overflow:hidden;text-overflow:ellipsis}
+.shop-cart-bubble{position:relative;display:inline-flex;align-items:center;justify-content:center;flex:0 0 46px;width:46px;height:46px;border-radius:50%;border:1px solid rgba(43,196,255,.65);background:linear-gradient(145deg,#102b50,#07162d);color:#fff;box-shadow:0 4px 18px rgba(0,0,0,.18);transition:transform .18s ease,border-color .18s ease;text-decoration:none}
+.shop-cart-bubble:hover{transform:translateY(-2px);border-color:#2bc4ff}
+.shop-cart-bubble svg{width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.cart-count-badge{position:absolute;top:-5px;right:-4px;min-width:21px;height:21px;padding:0 5px;box-sizing:border-box;display:flex;align-items:center;justify-content:center;border-radius:999px;background:#2bc4ff;color:#041329;border:2px solid #06122a;font-size:11px;font-weight:800;line-height:1}
+@media(max-width:600px){.shop-actions{gap:6px}.shop-nav-link{max-width:94px;font-size:12px;padding-inline:5px}.shop-cart-bubble{width:40px;height:40px;flex-basis:40px}.cart-count-badge{min-width:19px;height:19px;font-size:10px}}
+@media(prefers-reduced-motion:reduce){.shop-cart-bubble{transition:none}.shop-cart-bubble:hover{transform:none}}
