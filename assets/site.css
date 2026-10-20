@@ -316,3 +316,34 @@ button:disabled{opacity:.55;cursor:not-allowed}
 .shop-cart-bubble{box-shadow:0 5px 20px rgba(43,196,255,.18);animation:wtCartIn .35s ease-out}.shop-cart-bubble:active{transform:scale(.94)}
 @keyframes wtCartIn{from{transform:scale(.82);opacity:.6}to{transform:scale(1);opacity:1}}
 @media(prefers-reduced-motion:reduce){.product-emoji,.art-glow,.shop-cart-bubble{animation:none!important}.shop-product,.icon-action{transition:none!important}}
+
+/* Mobile storefront refresh inspired by the approved WonderTech mockup */
+.hd{position:sticky;top:0;z-index:80;background:color-mix(in srgb,var(--nv) 94%,transparent);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(43,196,255,.18)}
+.shop-actions{align-items:center}
+.shop-nav-link{border-radius:13px;transition:background .2s ease,border-color .2s ease,transform .2s ease}
+.shop-nav-link:hover{background:rgba(43,196,255,.1);border-color:var(--cy);transform:translateY(-1px)}
+.shop-cart-bubble{position:relative;z-index:82;flex:0 0 48px;width:48px;height:48px;box-shadow:0 0 0 4px rgba(43,196,255,.07),0 8px 22px rgba(0,0,0,.2)}
+.cart-count-badge{display:grid;place-items:center;min-width:21px;height:21px;padding:0 5px;border-radius:50%;background:var(--cy);color:#06122a;font-weight:800;border:2px solid var(--nv)}
+.shop-product{border-radius:18px;overflow:hidden;transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease}
+.shop-product:hover{transform:translateY(-4px);border-color:rgba(43,196,255,.48);box-shadow:0 16px 34px rgba(0,0,0,.2)}
+.shop-product-art{border-radius:15px;min-height:142px}
+.product-emoji{animation:wtEmojiFloat 3.4s ease-in-out infinite;display:inline-block}
+.shop-product:nth-child(2n) .product-emoji{animation-delay:-1.2s}
+.shop-product:nth-child(3n) .product-emoji{animation-delay:-2s}
+@keyframes wtEmojiFloat{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-6px) rotate(2deg)}}
+.shop-card-actions .icon-action{transition:transform .18s ease,background .18s ease}
+.shop-card-actions .icon-action:hover{transform:scale(1.08)}
+@media(max-width:600px){
+ body{padding-bottom:76px}
+ .hd{min-height:0;padding:8px 12px;gap:7px}
+ .hd #nav{width:100%;order:4}
+ .shop-actions{order:5;display:flex;gap:7px;justify-content:space-between;flex-wrap:nowrap;padding-top:8px;margin-top:2px}
+ .shop-nav-link{min-width:0;flex:1;padding:8px 5px;font-size:12px;border-radius:12px}
+ .shop-cart-bubble{position:fixed;right:14px;bottom:88px;top:auto;z-index:100;width:54px;height:54px;box-shadow:0 8px 26px rgba(0,0,0,.35),0 0 0 5px rgba(43,196,255,.12)}
+ html[dir="ltr"] .shop-cart-bubble{right:auto;left:14px}
+ .shop-product-art{min-height:120px}
+ .shop-product{padding:12px}
+ .shop-product h3{font-size:1rem}
+ .shop-product p{font-size:.9rem}
+}
+@media(prefers-reduced-motion:reduce){.product-emoji{animation:none!important}.shop-product,.shop-nav-link,.shop-card-actions .icon-action{transition:none!important}}
