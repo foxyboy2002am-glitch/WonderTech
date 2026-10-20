@@ -268,3 +268,9 @@ button:disabled{opacity:.55;cursor:not-allowed}
   .client-logo-mark{width:52px;height:52px;font-size:15px}
   .cl .client-logo b{font-size:12px}
 }
+
+/* Uploaded compact customer-logo sprite; crop the corresponding logo per card */
+.client-sprite{font-size:0!important;color:transparent!important;background-image:url("assets/clients/client-sprite.webp");background-repeat:no-repeat;background-size:340px 204px;background-color:#fff!important;border-color:rgba(255,255,255,.75)!important}
+.sprite-aisha{background-position:0 0}.sprite-malaz{background-position:25% 0}.sprite-alsalam{background-position:50% 0}.sprite-chicken{background-position:75% 0}.sprite-friend{background-position:100% 0}
+.sprite-haya{background-position:0 50%}.sprite-joe{background-position:25% 50%}.sprite-logexco{background-position:75% 50%}.sprite-malaki{background-position:100% 50%}
+.sprite-alhayat{background-position:0 100%}.sprite-palm{background-position:25% 100%}.sprite-rema{background-position:50% 100%}.sprite-sultan{background-position:75% 100%}
