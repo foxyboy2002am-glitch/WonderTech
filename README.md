@@ -1,34 +1,21 @@
 # WONDERTECH | واندر تك
 
-موقع WonderTech الرسمي، مع تجهيز أولي لتسجيل الحسابات والمتجر الإلكتروني.
+- `index.html`: page shell.
+- `assets/app.js`: bilingual site, Supabase auth, sample catalog/cart/wishlist and demo checkout.
+- `assets/site.css`: responsive styles.
+- `assets/clients/`: upload client logos here; see its README.
+- `assets/supabase-config.js`: public URL and anon-key placeholders only.
+- `supabase/schema.sql`: schema and Row Level Security.
+- `supabase/seed-demo.sql`: optional inactive demo catalog records.
 
-## Project structure
-- `index.html` — page shell and metadata.
-- `assets/site.css` — responsive styles, motion, and accessibility.
-- `assets/app.js` — bilingual site, routing, account UI, demo catalog/cart/wishlist.
-- `assets/logo.png` — brand logo.
-- `assets/supabase-config.js` — public client configuration placeholders only.
-- `supabase/schema.sql` — initial database schema and Row Level Security policies.
+## Supabase
+Create a Supabase project, configure its URL and `anon/public` key in `assets/supabase-config.js`, run `supabase/schema.sql`, and configure Auth redirect URLs. Never commit service-role keys, passwords, or payment secrets. Passwords are handled by Supabase Auth. Real sign-up/login requires a configured project.
 
-## Supabase setup
-1. Create a Supabase project.
-2. Copy the project URL and the **anon/public** browser key into `assets/supabase-config.js`.
-3. Never put a Supabase `service_role` key, payment secret, or any server secret in frontend files.
-4. Run `supabase/schema.sql` in the Supabase SQL Editor.
-5. In Supabase Authentication settings, configure the site URL and allowed redirect URLs for your GitHub Pages/custom domain, and enable email confirmation as desired.
-6. Test signup, confirmation, sign-in, sign-out, and password reset on the deployed site.
+## Demo store
+Six sample products show EGP demo prices for UI testing. Cart and demo checkout are local to the current browser; demo checkout does not charge money, create a real order, or collect card data. Optional database sample rows are inactive and have zero stock.
 
-Until a real project URL and anon key are configured, account pages intentionally show setup guidance. No real user credentials are stored by this site.
+## Before live payments
+GitHub Pages is static and cannot securely process payments alone. Add a trusted backend/Edge Function to validate prices and stock and create orders, integrate a selected payment provider with secrets stored server-side, and verify signed webhooks. Never trust browser state to mark orders paid. Real payments are not enabled.
 
-## Store readiness
-The catalog items are explicitly demo placeholders with no sale prices and are not represented as real inventory. Cart and wishlist currently use browser-local storage for preview only. Checkout and payment are disabled.
-
-Before selling:
-- Replace demo items with approved product data and images.
-- Add a trusted server-side/Edge Function checkout flow that calculates prices and checks stock.
-- Integrate a payment provider using server-side secrets and verified webhooks.
-- Add administrator roles and protected server-side product/order management.
-- Test Row Level Security and checkout/order creation before launch.
-
-## Deployment
-GitHub Pages should use branch `main` and folder `/(root)`. Keep the `CNAME` file in the repository root for the custom domain.
+## Performance
+Optimize images (WebP when suitable), lazy-load below-the-fold images, set image dimensions/aspect ratios, avoid autoplay and heavy animation libraries, and run Lighthouse plus real mobile-device tests before launch.
