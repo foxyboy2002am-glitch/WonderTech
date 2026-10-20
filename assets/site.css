@@ -270,7 +270,24 @@ button:disabled{opacity:.55;cursor:not-allowed}
 }
 
 /* Uploaded compact customer-logo sprite; crop the corresponding logo per card */
-.client-sprite{font-size:0!important;color:transparent!important;background-image:url("assets/clients/client-sprite.webp");background-repeat:no-repeat;background-size:340px 204px;background-color:#fff!important;border-color:rgba(255,255,255,.75)!important}
+.client-sprite{font-size:0!important;color:transparent!important;background-image:url("clients/client-sprite.webp");background-repeat:no-repeat;background-size:340px 204px;background-color:#fff!important;border-color:rgba(255,255,255,.75)!important}
 .sprite-aisha{background-position:0 0}.sprite-malaz{background-position:25% 0}.sprite-alsalam{background-position:50% 0}.sprite-chicken{background-position:75% 0}.sprite-friend{background-position:100% 0}
 .sprite-haya{background-position:0 50%}.sprite-joe{background-position:25% 50%}.sprite-logexco{background-position:75% 50%}.sprite-malaki{background-position:100% 50%}
 .sprite-alhayat{background-position:0 100%}.sprite-palm{background-position:25% 100%}.sprite-rema{background-position:50% 100%}.sprite-sultan{background-position:75% 100%}
+
+/* Project gallery: clients are the projects; use one coherent gallery instead of an empty placeholder */
+#projects .cl{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+#projects .client-logo{min-height:190px;padding:18px 14px;background:linear-gradient(160deg,rgba(255,255,255,.98),rgba(232,242,251,.98));border:1px solid rgba(43,196,255,.25);border-radius:18px;box-shadow:0 8px 24px rgba(0,12,35,.14);color:#0b1c36}
+#projects .client-logo-mark{width:100%;height:112px;max-width:100%;border:0;border-radius:10px;background-color:#fff!important;background-size:400% 200%;box-shadow:none}
+#projects .client-logo b{color:#102a4b;font-size:14px;font-weight:700;text-align:center}
+#projects .client-sprite{background-size:400% 200%}
+#projects .sprite-aisha{background-position:0% 0%}
+#projects .sprite-malaz{background-position:33.333% 0%}
+#projects .sprite-alsalam{background-position:66.666% 0%}
+#projects .sprite-chicken{background-position:100% 0%}
+#projects .sprite-friend{background-position:0% 100%}
+#projects .sprite-haya{background-position:33.333% 100%}
+#projects .sprite-joe{background-position:66.666% 100%}
+#projects .sprite-logexco{background-position:100% 100%}
+@media(max-width:900px){#projects .cl{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}#projects .client-logo{min-height:160px;padding:12px 9px}#projects .client-logo-mark{height:90px}}
+@media(max-width:600px){#projects .cl .client-logo b{font-size:12px}#projects .client-logo-mark{height:78px}}
