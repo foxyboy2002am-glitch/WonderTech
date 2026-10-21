@@ -1,0 +1,29 @@
+/* WONDERTECH fixes: header overlap + client logos. Load AFTER modern-ui.css */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:100}
+header .w.hd{position:relative!important;top:auto!important;display:grid!important;grid-template-columns:auto minmax(0,1fr) auto!important;grid-template-areas:"logo actions lang" "nav nav nav"!important;align-items:center!important;column-gap:14px!important;row-gap:4px!important;height:auto!important;min-height:0!important;padding-top:10px!important;padding-bottom:6px!important;background:none!important;backdrop-filter:none!important;border:0!important}
+header .logo{grid-area:logo;min-width:0}
+header .menu{grid-area:lang;display:none!important}
+header .lang{grid-area:lang;justify-self:end}
+header #shop-actions.shop-actions{grid-area:actions;justify-self:end;display:flex!important;flex-wrap:nowrap!important;flex:none!important;width:auto!important;order:0!important;align-items:center;gap:8px;margin:0!important;padding:0!important;border:0!important}
+header #shop-actions .shop-nav-link{flex:none!important;max-width:none!important;white-space:nowrap}
+header #shop-actions .shop-cart-bubble{position:relative!important;inset:auto!important;flex:0 0 44px!important;width:44px!important;height:44px!important}
+header #nav{grid-area:nav;display:flex!important;position:static!important;flex-direction:row!important;flex-wrap:wrap;justify-content:center;gap:2px 4px;margin:0!important;padding:6px 0 4px!important;max-height:none!important;overflow:visible!important;background:none!important;border:0!important;border-top:1px solid rgba(43,196,255,.18)!important;box-shadow:none!important;border-radius:0!important}
+header #nav a{min-height:0!important;padding:5px 10px!important;font-size:14px!important;white-space:nowrap}
+@media (max-width:1020px){
+ header .w.hd{grid-template-columns:minmax(0,1fr) auto auto!important;grid-template-areas:"logo menu lang" "actions actions actions" "nav nav nav"!important}
+ header .menu{grid-area:menu;display:block!important}
+ header .lang{grid-area:lang}
+ header #shop-actions.shop-actions{justify-self:stretch;justify-content:space-between;padding-top:6px!important;border-top:1px solid rgba(43,196,255,.18)!important}
+ header #shop-actions .shop-nav-link{flex:1 1 0!important;text-align:center;overflow:hidden;text-overflow:ellipsis}
+ header #nav{display:none!important;position:absolute!important;top:100%;inset-inline:0;z-index:99;flex-direction:column!important;align-items:stretch;padding:10px 16px 16px!important;background:rgba(6,18,42,.985)!important;border:1px solid rgba(43,196,255,.2)!important;border-top:0!important;border-radius:0 0 16px 16px!important;max-height:calc(100dvh - 130px)!important;overflow-y:auto!important}
+ header #nav.open{display:flex!important}
+ header #nav a{padding:12px 14px!important;font-size:15px!important}
+}
+@media (max-width:420px){header .logo b{font-size:16px}header #shop-actions .shop-nav-link{font-size:12px;padding:7px 4px}}
+/* clients: real logo files on white tiles (readable in dark mode too) */
+.cl{display:grid!important;grid-template-columns:repeat(auto-fill,minmax(150px,1fr))!important;gap:16px!important}
+.cl .wt-client{display:flex;flex-direction:column;align-items:center;gap:10px;min-height:0!important;padding:12px 12px 14px!important;background:#fff!important;border:1px solid rgba(43,196,255,.25)!important;border-radius:16px!important;color:#102a4b!important}
+.wt-client .lgbox{width:100%;aspect-ratio:3/2;display:grid;place-items:center;overflow:hidden;border-radius:10px;background:#fff;font-size:34px;font-weight:800;color:#1B6FD1}
+.wt-client img{max-width:100%;max-height:100%;object-fit:contain;display:block}
+.wt-client b{color:#102a4b!important;font-size:13px;font-weight:700;text-align:center}
+@media (max-width:600px){.cl{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}}
