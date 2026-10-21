@@ -267,6 +267,11 @@ function attachShopHandlers(){
 }
 
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const el=e.target,v=+el.dataset.v;let st=null;const f=ts=>{st=st||ts;const p=Math.min((ts-st)/1200,1);el.textContent=Math.round(v*p);if(p<1)requestAnimationFrame(f)};requestAnimationFrame(f);io.unobserve(el)}));
+/* Admin navigation visible to authenticated store admins */
+(function addAdminMenuStyles(){
+ const css='.wt-admin-menu{position:relative;display:inline-block;font-size:13px}.wt-admin-menu summary{list-style:none;cursor:pointer;border:1px solid #16b9ef;color:#35c9ff;border-radius:10px;padding:9px 11px;font-weight:700;white-space:nowrap}.wt-admin-menu summary::-webkit-details-marker{display:none}.wt-admin-dropdown{position:absolute;z-index:9999;top:calc(100% + 8px);right:0;min-width:220px;padding:8px;background:#0c1d39;border:1px solid #24527c;border-radius:12px;box-shadow:0 16px 36px #0005;display:grid;gap:4px}.wt-admin-dropdown a{color:#eef7ff;text-decoration:none;padding:10px 12px;border-radius:8px;white-space:nowrap}.wt-admin-dropdown a:hover{background:#183c65}.shop-actions{align-items:center;flex-wrap:wrap}@media(max-width:700px){.wt-admin-dropdown{right:auto;left:0}.wt-admin-menu summary{font-size:12px;padding:8px}}';
+ const st=document.createElement('style');st.textContent=css;document.head.appendChild(st);
+})();
 function render(){
  const t=D[L],r=(location.hash.replace("#/","")||"home"),p=(R.includes(r)||["store","checkout","login","register","account","cart","wishlist","reset-password"].includes(r))?r:"home";
  document.documentElement.lang=L;document.documentElement.dir=L==="ar"?"rtl":"ltr";
@@ -281,7 +286,7 @@ function render(){
  $("#fr").innerHTML=R.map(k=>`<a href="#/${k}">${t.nav[k]}</a>`).join("");
  document.title="WONDERTECH | "+(shopMsg().titles[p]||t.nav[p]||"");
  const shopText=shopMsg(),cartCount=cartItems().reduce((n,x)=>n+x.qty,0),displayName=authUser?(authUser.user_metadata?.full_name||authUser.user_metadata?.name||authUser.email?.split("@")[0]||shopText.account):shopText.signIn;
- $("#shop-actions").innerHTML=`<a href="#/store" class="shop-nav-link">${shopText.shop}</a><a href="#/${authUser?"account":"login"}" class="shop-nav-link">${safeText(displayName)}</a>${isStoreAdmin?'<a href="admin.html" class="shop-nav-link" style="border-color:#16b9ef;color:#35c9ff;font-weight:700">لوحة الإدارة</a><a href="reports.html" class="shop-nav-link">التقارير</a><a href="payments.html" class="shop-nav-link">الدفع</a>':''}<a href="#/wishlist" class="shop-nav-link">${shopText.wishlist}</a><a href="#/cart" class="shop-cart-bubble" aria-label="${shopText.cart}, ${cartCount}" title="${shopText.cart}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.1 10.1a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 1.9-1.4L21 8H6"/><circle cx="10" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg><span id="cart-count" class="cart-count-badge">${cartCount}</span></a>`;
+ $("#shop-actions").innerHTML=`<a href="#/store" class="shop-nav-link">${shopText.shop}</a><a href="#/${authUser?"account":"login"}" class="shop-nav-link">${safeText(displayName)}</a>${isStoreAdmin?'<details class="wt-admin-menu"><summary>إدارة المتجر ▾</summary><div class="wt-admin-dropdown"><a href="admin.html">لوحة التحكم الرئيسية</a><a href="reports.html">تقارير المبيعات والمخزون</a><a href="analytics.html">الزيارات والسلات</a><a href="payments.html">الدفع والحسابات</a></div></details>':''}<a href="#/wishlist" class="shop-nav-link">${shopText.wishlist}</a><a href="#/cart" class="shop-cart-bubble" aria-label="${shopText.cart}, ${cartCount}" title="${shopText.cart}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.1 10.1a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 1.9-1.4L21 8H6"/><circle cx="10" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg><span id="cart-count" class="cart-count-badge">${cartCount}</span></a>`;
  attachShopHandlers();
  const g=$("#go");if(g)g.onclick=()=>{const m=`${t.fn}: ${$("#n").value}\n${t.fc}: ${$("#c").value}\n${$("#q").value}`;window.open(wa(m),"_blank","noopener,noreferrer")};
  $("#nav").classList.remove("open");$("#mb").setAttribute("aria-expanded","false");
