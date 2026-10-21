@@ -135,8 +135,42 @@ const stats=()=>CFG.stats.length?`<div class="stats"><div class="w">${CFG.stats.
 const clients=t=>CFG.clients.length?sec(`<h2>${t.clT}</h2><p class="sub">${L==="ar"?"نعتز بثقة عملائنا في قطاعات المطاعم والتجارة والصناعة والتكنولوجيا.":"Proud to support clients across hospitality, retail, industry, and technology."}</p><div class="cl">${CFG.clients.map(c=>`<span class="client-logo" title="${c}"><span class="client-logo-mark client-sprite ${c==="Chicken Factor"?"sprite-chicken":c==="Aisha Restaurant & Cafe"?"sprite-aisha":c==="Friend Peanut"?"sprite-friend":c==="مصنع السلام"?"sprite-alsalam":c==="LOGEXCO"?"sprite-logexco":c==="الملازي"?"sprite-malaz":c==="haya.ai"?"sprite-haya":c==="Joe Park"?"sprite-joe":c==="شركة الملاز للتجارة والصناعة"?"sprite-malaki":c==="الحياة القابضة"?"sprite-alhayat":c==="REMA"?"sprite-rema":c==="السلطان البن اليمني"?"sprite-sultan":c==="U"?"sprite-palm":""}" aria-hidden="true">${c==="Chicken Factor"?"CF":c==="Aisha Restaurant & Cafe"?"AR":c==="Joe Park"?"JP":c==="Friend Peanut"?"FP":c==="LOGEXCO"?"LX":c==="REMA"?"RE":c==="TAVOLA"?"TV":c==="haya.ai"?"AI":c==="U"?"P":c==="مصنع السلام"?"السلام":c==="الملازي"?"الملازي":c==="شركة الملاز للتجارة والصناعة"?"الملاز":c==="الحياة القابضة"?"الحياة":c==="السلطان البن اليمني"?"السلطان":c==="مطعم وكافيه لاين"?"LINE":c.slice(0,2).toUpperCase()}</span><b>${c}</b></span>`).join("")}</div><div class="partner-panel"><div><span class="partner-kicker">${L==="ar"?"شريك حلول ERP":"ERP SOLUTIONS PARTNER"}</span><h3>Odoo ERP</h3><p>${L==="ar"?"نساعد الشركات على تطبيق وتخصيص حلول Odoo لإدارة المبيعات والمخزون والحسابات والعمليات.":"Helping businesses implement and tailor Odoo for sales, inventory, accounting, and operations."}</p></div><span class="odoo-wordmark" aria-label="Odoo">odoo<span>●</span></span></div><article class="featured-client"><div class="featured-client-top"><span class="client-feature-mark large">CF</span><div><span class="partner-kicker">${L==="ar"?"عميل مميز":"FEATURED CLIENT"}</span><h3>Chicken Factor</h3></div></div><p>${L==="ar"?"حلول تقنية متكاملة للمصنع تشمل تجهيز البنية التقنية، وكاميرات المراقبة، ونظام ERP لدعم التشغيل والإدارة.":"Integrated technology for the factory, including IT infrastructure, CCTV surveillance, and an ERP system to support operations and management."}</p><div class="featured-tags"><span>IT Infrastructure</span><span>CCTV</span><span>ERP</span></div></article>`,1):"";
 const tms=t=>CFG.tm.length?sec(`<h2>${t.tmT}</h2><div class="grid">${CFG.tm.map(m=>`<div class="box tm"><p>${m[L]}</p><b>${m.name}</b><small>${m.role||""}</small></div>`).join("")}</div>`):"";
 const faq=t=>sec(`<h2>${t.faqT}</h2><p class="sub">${t.faqS}</p>${t.faq.map(f=>`<details><summary>${f[0]}</summary><p>${f[1]}</p></details>`).join("")}`,1);
+
+function homeStorefront(t){
+ const ar=L==="ar";
+ const categories=ar?[
+  ["💻","لابتوبات","أجهزة كمبيوتر"],
+  ["📱","موبايلات","هواتف وإكسسوارات"],
+  ["🎧","إكسسوارات","سماعات وملحقات"],
+  ["📹","كاميرات","أنظمة المراقبة"],
+  ["📡","الشبكات","راوترات ومعدات"],
+  ["🖥️","نقاط البيع","POS وأجهزة كاشير"]
+ ]:[
+  ["💻","Laptops","Computers"],
+  ["📱","Mobiles","Phones & accessories"],
+  ["🎧","Accessories","Headsets & more"],
+  ["📹","Cameras","Surveillance"],
+  ["📡","Networking","Routers & gear"],
+  ["🖥️","POS Systems","Retail equipment"]
+ ];
+ return `<section class="wt-storefront" aria-labelledby="wt-storefront-title">
+  <div class="w">
+   <a class="wt-store-banner" href="#/store">
+    <span class="wt-store-bag" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M13 23h38l4 31H9l4-31Z"/><path d="M23 24v-7a9 9 0 0 1 18 0v7"/><path d="M24 37c4 5 12 5 16 0"/></svg><span>W</span></span>
+    <span class="wt-store-banner-copy"><small>${ar?"تسوّق من":"SHOP AT"}</small><strong>WONDER<span>TECH</span></strong><b>${ar?"متجر الأجهزة الإلكترونية والملحقات":"Electronics, devices & accessories"}</b><em>${ar?"منتجات مختارة · اطلب بسهولة · دعم فني":"Curated products · Easy ordering · Support"}</em></span>
+    <span class="wt-store-arrow" aria-hidden="true">←</span>
+   </a>
+   <div class="wt-store-heading"><div><small>${ar?"كل اللي تحتاجه في مكان واحد":"EVERYTHING IN ONE PLACE"}</small><h2 id="wt-storefront-title">${ar?"تصفّح حسب الفئة":"Shop by category"}</h2></div><a href="#/store">${ar?"عرض المتجر":"Visit store"} <span>←</span></a></div>
+   <div class="wt-category-grid">${categories.map((c,i)=>`<a class="wt-category-card" href="#/store"><span class="wt-category-icon">${c[0]}</span><b>${c[1]}</b><small>${c[2]}</small></a>`).join("")}</div>
+   <div class="wt-store-heading wt-best-heading"><div><small>${ar?"اختيارات مميزة":"FEATURED PICKS"}</small><h2>${ar?"الأكثر طلبًا":"Popular picks"} <span aria-hidden="true">🔥</span></h2></div><a href="#/store">${ar?"عرض الكل":"View all"} <span>←</span></a></div>
+   <div class="grid shop-grid wt-home-products">${SHOP_PRODUCTS.slice(0,4).map(productCard).join("")}</div>
+   <p class="wt-store-disclaimer">${ar?"المنتجات والأسعار المعروضة حاليًا نماذج تجريبية وليست عروض بيع فعلية.":"Products and prices shown are demo examples, not live offers."}</p>
+  </div>
+ </section>`;
+}
+
 const P={
-home:t=>`<div class="hero">${bgi}${circ}<div class="w"><div><p class="tag">${t.tag}</p><h1>${t.h1}</h1><p class="l">${t.lead}</p><p class="sw">${t.sw}</p><div class="btns"><a class="btn" href="#/contact">${t.quote}</a><a class="btn ghost" href="#/services">${t.explore}</a></div></div>${scene}${caps(t)}</div></div>`+stats()
+home:t=>`<div class="hero">${bgi}${circ}<div class="w"><div><p class="tag">${t.tag}</p><h1>${t.h1}</h1><p class="l">${t.lead}</p><p class="sw">${t.sw}</p><div class="btns"><a class="btn" href="#/contact">${t.quote}</a><a class="btn ghost" href="#/services">${t.explore}</a></div></div>${scene}${caps(t)}</div></div>`+stats()+homeStorefront(t)
 +sec(`<h2>${t.svcT}</h2><p class="sub">${t.svcS}</p>${svc(t)}`)+sec(`<h2>${t.indT}</h2><p class="sub">${t.indS}</p>${ind(t)}`,1)+sec(`<h2>${t.whyT}</h2><p class="sub">${t.whyS}</p>${why(t)}`)+clients(t)+tms(t)+faq(t)+band(t),
 about:t=>head(t.abT,t.ab[0])+sec(`<p style="max-width:44em;margin:0">${t.ab[1]}</p>`)+stats()+sec(`<h2>${t.whyT}</h2>${why(t)}`,1)+band(t),
 services:t=>head(t.svcT,t.svcS)+sec(svc(t))+band(t),
