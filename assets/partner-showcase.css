@@ -102,3 +102,26 @@
  .client-feature-logo img{max-width:108px!important;max-height:105px!important}
  .featured-client-top{align-items:center!important;gap:12px!important}
 }
+
+
+/* Prevent the decorative Odoo illustration from colliding with the copy */
+.partner-panel:before{
+ left:3%!important;width:38%!important;top:15%!important;height:72%!important;
+}
+.partner-panel:after{
+ left:6%!important;width:29%!important;top:25%!important;height:49%!important;
+}
+.partner-panel>div{
+ flex:0 1 51%!important;width:51%!important;max-width:51%!important;min-width:0!important;
+ margin-inline-start:auto!important;z-index:4!important;
+}
+.partner-panel p{
+ position:relative!important;z-index:4!important;max-width:100%!important;
+ overflow-wrap:break-word!important;
+}
+.odoo-wordmark{flex-shrink:0!important;z-index:3!important}
+@media(max-width:700px){
+ .partner-panel:before{left:8%!important;right:auto!important;width:76%!important;height:31%!important;top:9%!important}
+ .partner-panel:after{left:13%!important;right:auto!important;width:58%!important;height:27%!important;top:12%!important}
+ .partner-panel>div{flex:0 1 auto!important;width:100%!important;max-width:none!important}
+}
