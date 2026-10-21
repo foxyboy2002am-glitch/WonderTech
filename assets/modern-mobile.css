@@ -1,0 +1,42 @@
+/* WonderTech – modern mobile UI (override).
+   CSS only, no JS changes. Load after site.css. */
+@media (max-width:640px){
+
+/* ---- Header: logo + language + menu in one clean row ---- */
+header,header .hd{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+header{background:rgba(6,18,42,.97);border-bottom:1px solid rgba(255,255,255,.08)}
+header::after{display:none}
+header .hd{flex-wrap:nowrap;min-height:64px;padding-block:8px;gap:8px;background:transparent}
+header .logo{order:1;flex:1;min-width:0;max-width:none;position:relative;z-index:130}
+header .lang{order:2}
+header .menu{order:3;display:inline-flex;align-items:center;justify-content:center}
+header .lang,header .menu{position:relative;z-index:130;min-width:44px;min-height:44px;padding:0 14px;margin:0;border-radius:14px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);color:#fff}
+
+/* ---- Menu: full-screen sheet with big tappable rows ---- */
+#nav{position:fixed!important;inset:0;top:0;height:100dvh;max-height:none;z-index:120;display:none;flex-direction:column;gap:10px;padding:92px 20px calc(24px + env(safe-area-inset-bottom,0px));border:0;border-radius:0;box-shadow:none;overflow-y:auto;background:radial-gradient(380px 300px at 10% 0%,rgba(43,196,255,.18),transparent 70%),#060e22}
+#nav.open{display:flex}
+#nav a{display:flex;align-items:center;min-height:60px;padding:0 18px;border-radius:18px;font-size:18px;font-weight:700;color:#eaf1ff;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09)}
+#nav a.on{color:#fff;background:rgba(43,196,255,.12);border-color:rgba(43,196,255,.5)}
+
+/* ---- Store / account / favorites / cart: floating bottom bar ---- */
+body{padding-bottom:calc(104px + env(safe-area-inset-bottom,0px))}
+#shop-actions.shop-actions{position:fixed;left:14px;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:90;width:auto;flex:none;order:0;height:68px;margin:0;padding:6px;gap:4px;justify-content:space-around;align-items:center;border:1px solid rgba(255,255,255,.12);border-radius:26px;background:rgba(14,26,56,.95);box-shadow:0 14px 34px rgba(0,0,0,.5)}
+#shop-actions .shop-nav-link{flex:1 1 0;min-width:0;max-width:none;min-height:54px;padding:6px 4px;border:0;border-radius:20px;background:transparent;color:#a9bbd9;font-size:13px;justify-content:center}
+#shop-actions .shop-nav-link:hover,#shop-actions .shop-nav-link:active{background:rgba(43,196,255,.16);color:#7fdcff;transform:none}
+#shop-actions .shop-cart-bubble{flex:0 0 52px;width:52px;height:52px;border:0;color:#04112b;background:linear-gradient(135deg,#2ec5ff,#3b82ff);box-shadow:0 6px 18px rgba(43,196,255,.35)}
+#shop-actions .cart-count-badge{background:#04112b;color:#7fdcff;border:2px solid #2ec5ff}
+.fab{bottom:calc(96px + env(safe-area-inset-bottom,0px))!important;z-index:60;border-radius:99px}
+
+/* ---- Hero ---- */
+.hero .w{padding-top:36px;padding-bottom:40px}
+.tag{display:inline-flex;padding:6px 14px;border-radius:99px;background:rgba(43,196,255,.12);color:#7fdcff;font-size:13px;font-weight:700}
+h1{font-size:34px;line-height:1.35}
+.hero .btns{flex-wrap:nowrap;gap:10px}
+.hero .btn{flex:1;display:flex;align-items:center;justify-content:center;min-height:52px;padding:12px 10px;border-radius:14px;text-align:center}
+.hero .btn:not(.ghost){background:linear-gradient(135deg,#2ec5ff,#3b82ff);border-color:transparent;color:#04112b;font-weight:700}
+.hero .btn.ghost{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.18);color:#fff}
+
+/* ---- Cards ---- */
+.box,.cap,.shop-product{border-radius:20px}
+.cap{padding:20px 12px}
+}
