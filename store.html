@@ -306,9 +306,9 @@ function drawer(msg){
 }
 function submitOrder(e){
  e.preventDefault();
- const n=$("#cn").value.trim(),ph=$("#cp").value.trim().replace(/\s/g,""),ad=$("#ca").value.trim();
+ const n=$("#cn").value.trim(),rawPhone=$("#cp").value.trim().replace(/[\s()-]/g,""),ph=rawPhone.startsWith("00")?"+"+rawPhone.slice(2):rawPhone,ad=$("#ca").value.trim();
  if(!n)return $("#er").textContent="اكتب اسمك.";
- if(!/^(\+?20|0)?1[0125]\d{8}$/.test(ph))return $("#er").textContent="اكتب رقم موبايل مصري صحيح.";
+ if(!/^(?:(?:\+?20)|0)?1[0125]\d{8}$/.test(ph))return $("#er").textContent="اكتب رقم موبايل مصري صحيح (مثال 01001346655 أو 00201001346655).";
  if(!ad)return $("#er").textContent="اكتب العنوان أو المنطقة.";
  const ids=Object.keys(cart).filter(i=>byId(i));let sum=0;
  const lines=ids.map(i=>{const p=byId(i),q=cart[i];if(p.p)sum+=p.p*q;return `- ${p.n} × ${q}${p.p?" = "+fmt(p.p*q):" (عرض سعر)"}`});
