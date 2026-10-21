@@ -33,10 +33,10 @@
          items:Array.isArray(order.items)?order.items:[],total:Number(order.total)||0,
          notes:String(order.notes||'').slice(0,2000),status:'pending'
        };
-       const saved=await client.from('wt_orders').insert(row).select('id').single();
+       const saved=await client.from('wt_orders').insert(row);
        if(saved.error)return {ok:false,error:saved.error.message};
-       await track('order_submitted',row.items.reduce((a,x)=>a+(Number(x.quantity)||0),0),{order_id:saved.data.id,total:row.total});
-       return {ok:true,id:saved.data.id};
+       await track('order_submitted',row.items.reduce((a,x)=>a+(Number(x.quantity)||0),0),{total:row.total});
+       return {ok:true};
      } catch(e) { return {ok:false,error:String(e)}; }
    }
  };
