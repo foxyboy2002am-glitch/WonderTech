@@ -1,5 +1,9 @@
 -- WONDERTECH payment configuration, safe to run after pro-store-schema.sql
 begin;
+-- Ensure existing allowlisted administrators also have an active role.
+insert into public.wt_admin_roles(user_id,role,is_active)
+select user_id,'owner',true from public.wt_admins
+on conflict(user_id) do update set is_active=true;
 create table if not exists public.wt_payment_methods (
  id uuid primary key default gen_random_uuid(),
  method_code text not null unique check(method_code in ('cash_on_delivery','bank_transfer','wallet','card_gateway')),
