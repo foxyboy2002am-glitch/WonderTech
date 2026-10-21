@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>الإعدادات | WONDERTECH</title>
+<style>
+:root{color-scheme:dark;--bg:#07152d;--panel:#102544;--line:#284b72;--text:#edf5ff;--muted:#9fb8d5;--accent:#1ba8ee}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% 0,#123a70 0,transparent 42%),var(--bg);color:var(--text);font-family:Tahoma,Arial,sans-serif;min-height:100vh}
+body.light{color-scheme:light;--bg:#f2f6fb;--panel:#fff;--line:#d8e3ef;--text:#18334f;--muted:#60758d;--accent:#087fcb;background:var(--bg)}
+header{height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 max(20px,calc((100% - 1120px)/2));border-bottom:1px solid var(--line);background:var(--panel)}
+.brand{font-size:22px;font-weight:900;color:var(--text);text-decoration:none;direction:ltr}.brand i{color:var(--accent);font-style:normal}header a.back{color:var(--text);text-decoration:none;border:1px solid var(--line);border-radius:10px;padding:10px 14px}
+main{max-width:960px;margin:42px auto;padding:0 20px}.eyebrow{color:var(--accent);font-size:13px;font-weight:bold}h1{font-size:clamp(27px,4vw,38px);margin:8px 0}p{color:var(--muted);line-height:1.8}.section{margin-top:25px;padding:24px;background:var(--panel);border:1px solid var(--line);border-radius:18px;box-shadow:0 14px 40px #0001}.section h2{margin:0 0 6px;font-size:20px}.choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:18px}.choice{padding:20px;border:1px solid var(--line);border-radius:14px;background:transparent;color:var(--text);text-align:right;cursor:pointer;font:inherit;transition:.2s}.choice b{display:block;font-size:16px;margin-bottom:7px}.choice span{color:var(--muted);font-size:13px}.choice.active{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent);background:color-mix(in srgb,var(--accent) 10%,var(--panel))}.choice .check{float:left;color:var(--accent)}.note{padding:13px 15px;border-radius:12px;background:color-mix(in srgb,var(--accent) 9%,var(--panel));color:var(--muted);font-size:13px;margin-top:18px}@media(max-width:600px){header{padding:0 14px}.choices{grid-template-columns:1fr}.section{padding:18px}main{margin-top:26px}}
+</style></head>
+<body><header><a class="brand" href="index.html">WONDER<i>TECH</i></a><a class="back" href="index.html">العودة للمتجر ←</a></header>
+<main><div class="eyebrow">تخصيص تجربتك</div><h1>الإعدادات</h1><p>اختار شكل الواجهة المناسب ليك. اختيارك بيتحفظ على نفس المتصفح وبيُطبّق على الموقع الرئيسي.</p>
+<section class="section"><h2>المظهر والألوان</h2><p>اختار بين التصميم الداكن أو الواجهة الفاتحة النظيفة.</p>
+<div class="choices">
+<button class="choice" data-theme="dark"><b>◐ الوضع الداكن <span class="check"></span></b><span>كحلي عميق وتفاصيل باللون الأزرق السماوي.</span></button>
+<button class="choice" data-theme="light"><b>☼ الوضع الفاتح <span class="check"></span></b><span>خلفيات فاتحة ونصوص داكنة لقراءة أوضح.</span></button>
+</div><div class="note">الإعداد ده خاص بالمظهر فقط. إعدادات الحساب والدفع والأمان تظل من صفحاتها المخصصة.</div></section>
+<section class="section"><h2>الحساب</h2><p>تقدر ترجع للمتجر من الزر أعلى الصفحة، أو تفتح صفحة حسابك من هنا.</p><a class="back" href="index.html#/account">فتح حسابي</a></section></main>
+<script>
+function applyTheme(theme){document.body.classList.toggle('light',theme==='light');try{localStorage.setItem('wt-theme',theme)}catch(e){}document.querySelectorAll('[data-theme]').forEach(b=>{const active=b.dataset.theme===theme;b.classList.toggle('active',active);b.querySelector('.check').textContent=active?'✓':''})}
+let current='dark';try{current=localStorage.getItem('wt-theme')||'dark'}catch(e){}applyTheme(current);
+document.querySelectorAll('[data-theme]').forEach(b=>b.addEventListener('click',()=>applyTheme(b.dataset.theme)));
+</script></body></html>
