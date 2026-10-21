@@ -1,0 +1,87 @@
+
+/* Premium partner showcase: Odoo ERP + Chicken Factor */
+.partner-panel,.featured-client{
+ position:relative!important;isolation:isolate;overflow:hidden!important;
+ display:flex!important;align-items:center!important;justify-content:space-between!important;
+ gap:clamp(22px,4vw,54px)!important;padding:clamp(26px,4vw,54px)!important;
+ border-radius:26px!important;box-shadow:0 22px 55px rgba(5,17,42,.15)!important;
+ margin-top:22px!important;min-height:255px!important;
+}
+.partner-panel{
+ color:#f8f7ff!important;border:1px solid rgba(197,120,255,.38)!important;
+ background:radial-gradient(ellipse at 9% 80%,rgba(177,64,255,.34),transparent 42%),radial-gradient(ellipse at 75% 0%,rgba(102,62,207,.32),transparent 50%),linear-gradient(118deg,#100f2d 0%,#241744 55%,#171332 100%)!important;
+}
+.partner-panel:before{
+ content:"";position:absolute;z-index:-1;left:3%;top:15%;width:43%;height:72%;border:1px solid rgba(207,162,255,.23);border-radius:18px;
+ background:linear-gradient(145deg,rgba(255,255,255,.13),rgba(116,66,184,.06)),repeating-linear-gradient(0deg,transparent 0 26px,rgba(211,186,255,.08) 27px 28px),repeating-linear-gradient(90deg,transparent 0 42px,rgba(211,186,255,.07) 43px 44px);
+ box-shadow:inset 0 0 35px rgba(170,98,255,.11),0 18px 35px #05061566;
+ transform:perspective(900px) rotateY(7deg);
+}
+.partner-panel:after{
+ content:"";position:absolute;z-index:-1;left:8%;top:25%;width:34%;height:49%;border-radius:12px;
+ background:linear-gradient(180deg,#fbfaff,#e7e2ff);box-shadow:0 15px 30px #05061555;
+ clip-path:polygon(0 0,100% 0,100% 85%,57% 85%,53% 100%,44% 100%,40% 85%,0 85%);
+}
+.partner-panel>div{max-width:52%;margin-inline-start:auto;position:relative;z-index:2}
+.partner-panel h3{font-size:clamp(32px,4vw,48px)!important;line-height:1.12!important;margin:9px 0 12px!important;color:#fff!important;letter-spacing:-.035em}
+.partner-panel p{font-size:clamp(14px,1.35vw,17px)!important;line-height:1.9!important;color:#d8d1f0!important;max-width:590px}
+.partner-kicker{display:inline-flex!important;align-items:center;gap:8px;padding:7px 12px!important;border:1px solid rgba(186,139,255,.35)!important;border-radius:999px!important;background:rgba(133,85,214,.17)!important;color:#d8b4ff!important;font-size:11px!important;font-weight:800!important;letter-spacing:.04em}
+.partner-kicker:before{content:"";width:7px;height:7px;border-radius:50%;background:#cf79ff;box-shadow:0 0 12px #cf79ff}
+.odoo-wordmark{
+ position:relative!important;z-index:3;display:flex!important;align-items:center!important;justify-content:center!important;
+ flex:0 0 clamp(115px,18vw,205px)!important;min-height:100px!important;padding:15px!important;
+ border:1px solid rgba(255,255,255,.22)!important;border-radius:24px!important;
+ background:linear-gradient(145deg,rgba(255,255,255,.18),rgba(255,255,255,.045))!important;
+ box-shadow:0 15px 35px rgba(0,0,0,.2),inset 0 1px 0 rgba(255,255,255,.15)!important;
+ color:#fff!important;font-size:clamp(33px,5vw,55px)!important;font-weight:900!important;letter-spacing:-.09em!important;
+}
+.odoo-wordmark:before{content:"";position:absolute;inset:8px;border:1px solid rgba(211,174,255,.18);border-radius:17px}
+.odoo-wordmark span{font-size:9px!important;color:#ce7cff!important;margin-inline-start:3px!important}
+.odoo-wordmark:after{content:"ERP";position:absolute;bottom:12px;inset-inline-end:15px;font-size:10px;font-weight:800;letter-spacing:.15em;color:#d7b2ff}
+.featured-client{
+ color:#0a1e42!important;border:1px solid rgba(42,147,255,.28)!important;
+ background:radial-gradient(ellipse at 12% 20%,rgba(42,183,255,.22),transparent 42%),radial-gradient(ellipse at 75% 100%,rgba(95,167,255,.18),transparent 46%),linear-gradient(120deg,#f4f9ff 0%,#e1efff 52%,#f8fbff 100%)!important;
+}
+.featured-client:before{
+ content:"";position:absolute;z-index:-1;inset:0;opacity:.42;
+ background:linear-gradient(135deg,transparent 0 45%,rgba(53,147,255,.15) 45.2% 45.6%,transparent 45.8%),
+ repeating-linear-gradient(0deg,transparent 0 37px,rgba(37,121,221,.06) 38px 39px);
+ pointer-events:none;
+}
+.featured-client:after{
+ content:"";position:absolute;z-index:-1;left:4%;top:18%;width:38%;height:65%;border-radius:20px;
+ background:linear-gradient(150deg,#fff,#c9e4ff);border:1px solid rgba(55,143,239,.22);
+ box-shadow:0 15px 32px rgba(35,104,184,.16);
+}
+.featured-client-top{display:flex!important;align-items:center!important;gap:16px!important;position:relative;z-index:2}
+.client-feature-mark.large{
+ display:grid!important;place-items:center!important;flex:0 0 72px!important;width:72px!important;height:72px!important;
+ border-radius:22px!important;background:linear-gradient(145deg,#ff623b,#ed371d)!important;color:white!important;
+ font-size:22px!important;font-weight:900!important;box-shadow:0 12px 24px rgba(238,68,35,.23)!important;
+ border:1px solid rgba(255,255,255,.65)!important;
+}
+.featured-client h3{font-size:clamp(27px,3.8vw,44px)!important;line-height:1.12!important;margin:7px 0 0!important;color:#0a1e42!important;letter-spacing:-.035em!important}
+.featured-client .partner-kicker{color:#1261ad!important;background:rgba(36,135,245,.1)!important;border-color:rgba(36,135,245,.18)!important}
+.featured-client .partner-kicker:before{background:#1686f6!important;box-shadow:0 0 10px #1686f6}
+.featured-client>p{position:relative;z-index:2;max-width:54%;margin:14px 0 0 auto!important;color:#385475!important;font-size:clamp(14px,1.3vw,17px)!important;line-height:1.9!important}
+.featured-tags{position:relative;z-index:2;display:flex!important;flex-wrap:wrap!important;gap:8px!important;margin-top:18px!important}
+.featured-tags span{display:inline-flex!important;align-items:center!important;gap:6px!important;padding:8px 12px!important;border-radius:999px!important;background:rgba(255,255,255,.74)!important;border:1px solid rgba(31,119,218,.18)!important;color:#174b82!important;font-size:11px!important;font-weight:800!important;box-shadow:0 4px 12px rgba(20,79,140,.04)!important}
+.featured-tags span:before{content:"✓";display:grid;place-items:center;width:15px;height:15px;border-radius:50%;background:#d8ecff;color:#1477db;font-size:10px}
+.cl{gap:12px!important}
+.client-logo{border-radius:16px!important;background:rgba(255,255,255,.72)!important;border:1px solid rgba(80,132,198,.13)!important;box-shadow:0 8px 20px rgba(13,44,83,.04)!important;transition:transform .2s,border-color .2s!important}
+.client-logo:hover{transform:translateY(-3px);border-color:rgba(43,164,255,.4)!important}
+@media(max-width:700px){
+ .partner-panel,.featured-client{display:flex!important;flex-direction:column-reverse!important;align-items:stretch!important;gap:18px!important;padding:22px 18px!important;min-height:0!important;border-radius:21px!important}
+ .partner-panel:before,.partner-panel:after,.featured-client:after{left:auto;right:8%;top:9%;width:76%;height:31%;opacity:.42}
+ .partner-panel>div{max-width:none!important;width:100%;margin:0!important}
+ .partner-panel h3{font-size:32px!important}
+ .partner-panel p,.featured-client>p{max-width:none!important;width:100%;margin:10px 0 0!important;font-size:14px!important}
+ .odoo-wordmark{align-self:flex-start!important;flex-basis:auto!important;min-height:72px!important;width:130px!important;font-size:38px!important;border-radius:18px!important}
+ .featured-client{flex-direction:column!important}
+ .featured-client-top{gap:12px!important}
+ .client-feature-mark.large{flex-basis:58px!important;width:58px!important;height:58px!important;border-radius:17px!important}
+ .featured-client h3{font-size:29px!important}
+ .featured-tags{margin-top:14px!important}
+ .featured-tags span{font-size:10px!important;padding:7px 9px!important}
+}
+@media(prefers-reduced-motion:reduce){.client-logo{transition:none!important}}
