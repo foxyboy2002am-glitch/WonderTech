@@ -329,7 +329,7 @@ document.addEventListener("click",e=>{
  else if(a==="mq"){const s=$("#mq"),p=byId($("#md").dataset.id);s.textContent=Math.max(1,Math.min(p.s||1,+s.textContent+ +b.dataset.v))}
  else if(a==="tab"){open($("#md").dataset.id,b.dataset.v)}
  else if(a==="cq"){const p=byId(id);cart[id]=Math.max(1,Math.min(p.p?p.s:99,cart[id]+ +b.dataset.v));sv("wt-cart",cart);if(window.WTTrack)WTTrack.cartUpdate(cart);render();drawer()}
- else if(a==="rm"){delete cart[id];sv("wt-cart",cart);render();drawer()}
+ else if(a==="rm"){delete cart[id];sv("wt-cart",cart);if(window.WTTrack)WTTrack.cartUpdate(cart);render();drawer()}
 });
 document.addEventListener("submit",e=>{if(e.target.id==="co")submitOrder(e)});
 $("#ov").onclick=closeAll;
