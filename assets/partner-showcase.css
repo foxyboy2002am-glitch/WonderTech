@@ -175,3 +175,74 @@
  }
  .odoo-wordmark{flex:0 0 130px!important}
 }
+
+
+/* Odoo banner redesign: copy on the left, dashboard artwork on the right */
+.partner-panel{
+ display:grid!important;
+ grid-template-columns:minmax(0, .92fr) minmax(330px, 1.08fr)!important;
+ align-items:center!important;
+ gap:clamp(24px,4vw,56px)!important;
+ padding:clamp(30px,4vw,58px)!important;
+ min-height:320px!important;
+ background:radial-gradient(ellipse at 78% 52%,rgba(142,56,255,.27),transparent 37%),radial-gradient(ellipse at 12% 4%,rgba(110,54,209,.18),transparent 42%),linear-gradient(115deg,#100d2a 0%,#191038 52%,#251047 100%)!important;
+}
+.partner-panel:before{
+ left:auto!important;right:4%!important;top:15%!important;width:43%!important;height:70%!important;
+ border-radius:22px!important;transform:perspective(900px) rotateY(-7deg)!important;
+ background:linear-gradient(145deg,rgba(255,255,255,.1),rgba(115,64,190,.08)),repeating-linear-gradient(0deg,transparent 0 25px,rgba(211,186,255,.07) 26px 27px),repeating-linear-gradient(90deg,transparent 0 38px,rgba(211,186,255,.07) 39px 40px)!important;
+ border-color:rgba(207,162,255,.28)!important;
+}
+.partner-panel:after{
+ left:auto!important;right:8%!important;top:22%!important;width:35%!important;height:53%!important;
+ border-radius:13px!important;clip-path:none!important;
+ background:linear-gradient(145deg,#fff 0%,#eee8ff 100%)!important;
+ border:5px solid #151024!important;
+ box-shadow:0 16px 40px rgba(0,0,0,.35),0 0 0 1px rgba(190,125,255,.5)!important;
+}
+.partner-panel>div{
+ grid-column:1!important;grid-row:1!important;
+ flex:none!important;width:100%!important;max-width:100%!important;min-width:0!important;
+ margin:0!important;z-index:5!important;text-align:left!important;
+}
+.partner-panel h3{
+ font-size:clamp(40px,5vw,62px)!important;letter-spacing:-.045em!important;
+ margin:15px 0 12px!important;line-height:1.02!important;
+}
+.partner-panel h3:after{content:"";display:block;width:70px;height:4px;border-radius:8px;margin-top:15px;background:linear-gradient(90deg,#b65cff,#7437ff)}
+.partner-panel p{
+ text-align:left!important;max-width:100%!important;color:#e0d9f5!important;
+ font-size:clamp(15px,1.4vw,18px)!important;line-height:1.85!important;margin:0!important;
+}
+.partner-kicker{font-size:12px!important;padding:9px 14px!important}
+.odoo-wordmark{
+ grid-column:2!important;grid-row:1!important;
+ justify-self:center!important;align-self:center!important;
+ width:clamp(125px,16vw,195px)!important;min-height:105px!important;
+ margin:0!important;z-index:6!important;
+ border:1px solid rgba(255,255,255,.45)!important;
+ background:linear-gradient(145deg,rgba(255,255,255,.94),rgba(222,207,255,.93))!important;
+ color:#5d338c!important;
+ box-shadow:0 18px 50px rgba(4,0,20,.32),0 0 38px rgba(166,78,255,.4)!important;
+ font-size:clamp(34px,4vw,49px)!important;letter-spacing:-.09em!important;
+ transform:translate(14%,18%)!important;
+}
+.odoo-wordmark:before{border-color:rgba(119,64,185,.18)!important}
+.odoo-wordmark:after{color:#7d36ce!important}
+.partner-panel:before,.partner-panel:after{pointer-events:none!important}
+@media(max-width:760px){
+ .partner-panel{
+  grid-template-columns:minmax(0,1fr)!important;gap:22px!important;
+  padding:25px 20px!important;min-height:0!important;
+ }
+ .partner-panel>div{grid-column:1!important;grid-row:1!important}
+ .partner-panel:before{right:5%!important;top:auto!important;bottom:7%!important;width:70%!important;height:34%!important}
+ .partner-panel:after{right:10%!important;top:auto!important;bottom:13%!important;width:58%!important;height:27%!important}
+ .odoo-wordmark{
+  grid-column:1!important;grid-row:2!important;justify-self:end!important;
+  width:112px!important;min-height:65px!important;font-size:31px!important;
+  transform:translate(-4%,-4%)!important;margin-top:-4px!important;
+ }
+ .partner-panel h3{font-size:39px!important}
+ .partner-panel p{font-size:14px!important}
+}
