@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 300" role="img" aria-labelledby="title desc">
+<title id="title">Chicken Factor</title><desc id="desc">Chicken Factor rooster emblem and wordmark</desc>
+<defs><linearGradient id="red" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ff5543"/><stop offset="1" stop-color="#bd101b"/></linearGradient><linearGradient id="gold" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fff47a"/><stop offset="1" stop-color="#f5a900"/></linearGradient><filter id="shadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="5" stdDeviation="3" flood-color="#17110a" flood-opacity=".45"/></filter></defs>
+<g filter="url(#shadow)" stroke="#19100c" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+<path fill="#fff7db" d="M105 132 77 124 100 111 78 101 115 90 128 61 148 72 161 48 180 69 199 57 207 83 232 94 217 112 235 126 207 136 190 156 145 162Z"/>
+<path fill="url(#red)" d="M119 82C91 57 109 34 136 43 134 21 160 13 173 35 189 17 211 37 205 61L191 83 163 92Z"/>
+<path fill="#fff7db" d="M130 91C145 73 178 73 194 91L209 115 192 138 174 151 142 142 119 123Z"/>
+<path fill="url(#gold)" d="M181 101 230 112 195 128Z"/><path fill="#e9b700" d="M158 138 189 145 176 163 154 157Z"/>
+<circle cx="175" cy="100" r="9" fill="#fff"/><circle cx="178" cy="101" r="4" fill="#17100b" stroke="none"/>
+<path fill="#f8bd13" d="M137 151 120 170 149 165 157 151Z"/>
+<path fill="url(#gold)" d="M104 176 310 176 295 196 91 196Z"/>
+<path fill="url(#red)" d="M57 181 341 181 327 217 68 217Z"/>
+<path fill="url(#gold)" d="M83 220 326 220 308 244 99 244Z"/>
+</g>
+<g text-anchor="middle" font-family="Arial Black,Arial,sans-serif" font-weight="900" paint-order="stroke" stroke-linejoin="round" filter="url(#shadow)">
+<text x="201" y="210" font-size="42" fill="#fff06a" stroke="#281008" stroke-width="7">CHICKEN</text>
+<text x="207" y="241" font-size="35" fill="#ffe65a" stroke="#281008" stroke-width="7">FACTOR</text>
+</g>
+</svg>
