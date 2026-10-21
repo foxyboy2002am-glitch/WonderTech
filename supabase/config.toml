@@ -1,0 +1,7 @@
+project_id = "lvfuebglrgdaqzdoetos"
+
+[functions.create-checkout]
+verify_jwt = true
+
+[functions.paymob-callback]
+verify_jwt = false
