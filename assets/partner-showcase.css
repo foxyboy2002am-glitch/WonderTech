@@ -125,3 +125,53 @@
  .partner-panel:after{left:13%!important;right:auto!important;width:58%!important;height:27%!important;top:12%!important}
  .partner-panel>div{flex:0 1 auto!important;width:100%!important;max-width:none!important}
 }
+
+
+/* Final separation: keep the Odoo illustration in its own left-side visual zone */
+.partner-panel{
+ position:relative!important;
+}
+.partner-panel:before{
+ left:2%!important;
+ width:28%!important;
+ top:15%!important;
+ height:72%!important;
+}
+.partner-panel:after{
+ left:4%!important;
+ width:21%!important;
+ top:25%!important;
+ height:49%!important;
+}
+.partner-panel>div{
+ flex:0 1 45%!important;
+ width:45%!important;
+ max-width:45%!important;
+ min-width:0!important;
+ margin-inline-start:auto!important;
+ position:relative!important;
+ z-index:5!important;
+}
+.partner-panel h3,.partner-panel p,.partner-panel .partner-kicker{
+ position:relative!important;
+ z-index:5!important;
+}
+.partner-panel p{
+ width:100%!important;
+ max-width:100%!important;
+}
+.odoo-wordmark{
+ flex:0 0 clamp(100px,14vw,155px)!important;
+}
+@media(max-width:700px){
+ .partner-panel:before{
+  left:5%!important;right:auto!important;width:70%!important;top:9%!important;height:27%!important;
+ }
+ .partner-panel:after{
+  left:10%!important;right:auto!important;width:53%!important;top:12%!important;height:24%!important;
+ }
+ .partner-panel>div{
+  flex:0 1 auto!important;width:100%!important;max-width:100%!important;
+ }
+ .odoo-wordmark{flex:0 0 130px!important}
+}
