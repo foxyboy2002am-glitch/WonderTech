@@ -1,4 +1,7 @@
--- WONDERTECH admin analytics setup (run in Supabase SQL Editor once)
+-- WONDERTECH admin analytics setup (run in Supabase SQL Editor once).
+-- Create the administrator first in Supabase Dashboard > Authentication > Users.
+-- Then copy that user's UUID and run: insert into public.wt_admins(user_id) values ('USER-UUID-HERE');
+-- Never put an admin password or service_role key in this repository.
 create table if not exists public.wt_admins (
   user_id uuid primary key references auth.users(id) on delete cascade,
   created_at timestamptz not null default now()
@@ -59,3 +62,15 @@ create policy "admins can update orders" on public.wt_orders for update to authe
 ) with check (
   exists (select 1 from public.wt_admins a where a.user_id = auth.uid())
 );
+
+-- Enable order INSERT notifications for authenticated admin sessions (safe if already enabled).
+do $$ begin
+  if not exists (
+    select 1 from pg_publication_tables
+    where pubname = 'supabase_realtime' and schemaname = 'public' and tablename = 'wt_orders'
+  ) then
+    alter publication supabase_realtime add table public.wt_orders;
+  end if;
+exception when undefined_object then
+  raise notice 'supabase_realtime publication is unavailable; dashboard polling still works.';
+end $$;
