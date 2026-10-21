@@ -246,3 +246,47 @@
  .partner-panel h3{font-size:39px!important}
  .partner-panel p{font-size:14px!important}
 }
+
+
+/* Correct RTL grid placement and layer the illustration behind the content */
+.partner-panel{
+ direction:ltr!important;
+ isolation:isolate!important;
+ overflow:hidden!important;
+}
+.partner-panel:before{
+ z-index:0!important;
+ right:4%!important;left:auto!important;
+ width:43%!important;top:15%!important;height:70%!important;
+}
+.partner-panel:after{
+ z-index:0!important;
+ right:8%!important;left:auto!important;
+ width:35%!important;top:22%!important;height:53%!important;
+}
+.partner-panel>div{
+ direction:rtl!important;
+ text-align:right!important;
+ grid-column:1!important;grid-row:1!important;
+ position:relative!important;z-index:3!important;
+}
+.partner-panel h3,.partner-panel p,.partner-panel .partner-kicker{
+ position:relative!important;z-index:3!important;
+}
+.partner-panel h3:after{margin-left:auto!important;margin-right:0!important}
+.partner-panel p{color:#e7defb!important;text-align:right!important}
+.odoo-wordmark{
+ grid-column:2!important;grid-row:1!important;
+ position:relative!important;z-index:4!important;
+ transform:none!important;
+}
+@media(max-width:760px){
+ .partner-panel{direction:rtl!important;grid-template-columns:minmax(0,1fr)!important}
+ .partner-panel>div{grid-column:1!important;grid-row:1!important}
+ .partner-panel:before{right:5%!important;left:auto!important;bottom:7%!important;top:auto!important;width:70%!important;height:34%!important}
+ .partner-panel:after{right:10%!important;left:auto!important;bottom:13%!important;top:auto!important;width:58%!important;height:27%!important}
+ .odoo-wordmark{
+  grid-column:1!important;grid-row:2!important;justify-self:start!important;
+  transform:none!important;margin-top:0!important;
+ }
+}
