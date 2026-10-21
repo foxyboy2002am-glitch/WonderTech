@@ -171,7 +171,8 @@ const SHOP_PRODUCTS=[
 ];
 function money(v){return new Intl.NumberFormat(L==="ar"?"ar-EG":"en-EG",{style:"currency",currency:"EGP",maximumFractionDigits:0}).format(v)}
 function cartTotal(){return cartItems().reduce((s,x)=>s+(SHOP_PRODUCTS.find(p=>p.id===x.id)?.price||0)*x.qty,0)}
-let supabaseClient=null,authUser=null,authMessage="";
+let supabaseClient=null,authUser=null,authMessage="",isStoreAdmin=false;
+async function refreshAdminAccess(){isStoreAdmin=false;if(supabaseClient&&authUser){try{const {data,error}=await supabaseClient.from("wt_admins").select("user_id").eq("user_id",authUser.id).maybeSingle();isStoreAdmin=!error&&!!data;}catch(e){isStoreAdmin=false;}}}
 function initSupabase(){
  const c=window.WONDERTECH_SUPABASE_CONFIG||{};
  if(!window.supabase||!c.url||!c.anonKey||c.url.includes("YOUR-PROJECT")||c.anonKey.includes("YOUR_SUPABASE"))return null;
@@ -179,8 +180,8 @@ function initSupabase(){
 }
 supabaseClient=initSupabase();
 if(supabaseClient){
- supabaseClient.auth.getSession().then(({data})=>{authUser=data.session?.user||null;render();}).catch(()=>{});
- supabaseClient.auth.onAuthStateChange((_event,session)=>{authUser=session?.user||null;});
+ supabaseClient.auth.getSession().then(async({data})=>{authUser=data.session?.user||null;await refreshAdminAccess();render();}).catch(()=>{});
+ supabaseClient.auth.onAuthStateChange(async(_event,session)=>{authUser=session?.user||null;await refreshAdminAccess();render();});
 }
 function shopMsg(){return SHOP_COPY[L];}
 function safeText(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
@@ -280,7 +281,7 @@ function render(){
  $("#fr").innerHTML=R.map(k=>`<a href="#/${k}">${t.nav[k]}</a>`).join("");
  document.title="WONDERTECH | "+(shopMsg().titles[p]||t.nav[p]||"");
  const shopText=shopMsg(),cartCount=cartItems().reduce((n,x)=>n+x.qty,0),displayName=authUser?(authUser.user_metadata?.full_name||authUser.user_metadata?.name||authUser.email?.split("@")[0]||shopText.account):shopText.signIn;
- $("#shop-actions").innerHTML=`<a href="#/store" class="shop-nav-link">${shopText.shop}</a><a href="#/${authUser?"account":"login"}" class="shop-nav-link">${safeText(displayName)}</a><a href="#/wishlist" class="shop-nav-link">${shopText.wishlist}</a><a href="#/cart" class="shop-cart-bubble" aria-label="${shopText.cart}, ${cartCount}" title="${shopText.cart}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.1 10.1a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 1.9-1.4L21 8H6"/><circle cx="10" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg><span id="cart-count" class="cart-count-badge">${cartCount}</span></a>`;
+ $("#shop-actions").innerHTML=`<a href="#/store" class="shop-nav-link">${shopText.shop}</a><a href="#/${authUser?"account":"login"}" class="shop-nav-link">${safeText(displayName)}</a>${isStoreAdmin?'<a href="admin.html" class="shop-nav-link" style="border-color:#16b9ef;color:#35c9ff;font-weight:700">لوحة الإدارة</a><a href="reports.html" class="shop-nav-link">التقارير</a><a href="payments.html" class="shop-nav-link">الدفع</a>':''}<a href="#/wishlist" class="shop-nav-link">${shopText.wishlist}</a><a href="#/cart" class="shop-cart-bubble" aria-label="${shopText.cart}, ${cartCount}" title="${shopText.cart}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.1 10.1a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 1.9-1.4L21 8H6"/><circle cx="10" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg><span id="cart-count" class="cart-count-badge">${cartCount}</span></a>`;
  attachShopHandlers();
  const g=$("#go");if(g)g.onclick=()=>{const m=`${t.fn}: ${$("#n").value}\n${t.fc}: ${$("#c").value}\n${$("#q").value}`;window.open(wa(m),"_blank","noopener,noreferrer")};
  $("#nav").classList.remove("open");$("#mb").setAttribute("aria-expanded","false");
