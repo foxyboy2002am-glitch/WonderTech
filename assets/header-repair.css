@@ -92,3 +92,46 @@ html body header #shop-actions .wt-settings-dropdown button#wt-theme-dark::after
  html body header .w.hd{min-height:72px!important}
  html body header #nav{inset-inline:18px!important}
 }
+
+/* Storefront header redesign: clean logo area, compact actions, clear menu. */
+html body header{background:#0b1830!important;border-bottom:1px solid rgba(40,190,255,.17)!important}
+html body header .w.hd{display:flex!important;flex-direction:row!important;flex-wrap:nowrap!important;align-items:center!important;gap:14px!important;min-height:76px!important;padding:10px 20px!important;box-sizing:border-box!important}
+html body header .logo{order:4!important;flex:0 0 auto!important;margin:0!important;display:flex!important;align-items:center!important;gap:9px!important}
+html body header .logo b{font-size:22px!important;letter-spacing:.2px!important;color:#f3f8ff!important}
+html body header .logo img{width:42px!important;height:42px!important;object-fit:contain!important}
+html body header #mb.menu{order:3!important;display:inline-flex!important;flex:0 0 42px!important;width:42px!important;height:42px!important;min-height:42px!important;align-items:center!important;justify-content:center!important;background:#122746!important;color:#e7f5ff!important;border:1px solid #284b72!important;border-radius:13px!important;font-size:0!important}
+html body header #mb.menu::before{content:"☰"!important;font-size:21px!important}
+html body header #nav{display:none!important;position:absolute!important;top:100%!important;right:20px!important;left:auto!important;width:min(320px,calc(100vw - 40px))!important;z-index:6000!important;flex-direction:column!important;align-items:stretch!important;gap:5px!important;padding:12px!important;margin:0!important;background:#0d203d!important;border:1px solid #24476d!important;border-radius:0 0 16px 16px!important;box-shadow:0 20px 50px #0006!important}
+html body header #nav.open{display:flex!important}
+html body header #nav a{display:flex!important;align-items:center!important;min-height:42px!important;padding:10px 13px!important;border-radius:10px!important;color:#dcecff!important;white-space:normal!important}
+html body header #nav a:hover,html body header #nav a.on{background:#173a60!important;color:#fff!important}
+html body header #shop-actions.shop-actions{order:2!important;display:flex!important;flex:1 1 auto!important;min-width:0!important;align-items:center!important;justify-content:flex-start!important;flex-wrap:nowrap!important;gap:8px!important;width:auto!important;height:auto!important;margin:0!important;padding:0!important;overflow:visible!important;border:0!important}
+html body header #shop-actions>*{height:40px!important;min-height:40px!important;padding:0 13px!important;font-size:12px!important;border-radius:12px!important;box-sizing:border-box!important}
+html body header #shop-actions .wt-store-link{background:linear-gradient(135deg,#087fe4,#22b7ed)!important;color:#fff!important;border:0!important;font-weight:800!important}
+html body header #shop-actions .wt-welcome-chip{min-width:92px!important;height:40px!important;padding:0 12px!important;justify-content:center!important;border-color:#25486d!important;background:#112744!important}
+html body header #shop-actions .wt-welcome-small{color:#a9c4e0!important}
+html body header #shop-actions .wt-welcome-chip strong{color:#fff!important}
+html body header #shop-actions .wt-settings-link{display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:6px!important;text-decoration:none!important;border:1px solid #2b4b70!important;background:#112744!important;color:#e8f4ff!important;font-weight:700!important}
+html body header #shop-actions .wt-settings-link:hover{background:#193b60!important;border-color:#28b9ee!important}
+html body header #shop-actions>details>summary{height:40px!important;min-height:40px!important;padding:0 13px!important}
+html body header .lang{order:1!important;height:40px!important;min-height:40px!important;padding:0 13px!important;margin:0!important;border-radius:12px!important}
+html body.wt-light-theme header{background:#fff!important;border-bottom:1px solid #dbe5ef!important}
+html body.wt-light-theme header .logo b{color:#153454!important}
+html body.wt-light-theme header #mb.menu,html body.wt-light-theme header #shop-actions .wt-settings-link,html body.wt-light-theme header #shop-actions>.shop-nav-link,html body.wt-light-theme header .lang{background:#f5f9fd!important;color:#1b3856!important;border-color:#d5e2ef!important}
+html body.wt-light-theme header #shop-actions .wt-welcome-chip{background:#f5f9fd!important;border-color:#d5e2ef!important}
+html body.wt-light-theme header #shop-actions .wt-welcome-chip strong{color:#1b3856!important}
+@media(max-width:850px){
+ html body header .w.hd{gap:8px!important;padding:8px 10px!important}
+ html body header .logo b{font-size:17px!important}
+ html body header .logo img{width:34px!important;height:34px!important}
+ html body header #shop-actions.shop-actions{gap:5px!important;overflow-x:auto!important;scrollbar-width:none!important}
+ html body header #shop-actions.shop-actions::-webkit-scrollbar{display:none!important}
+ html body header #shop-actions>*{padding:0 8px!important;font-size:11px!important;flex:0 0 auto!important}
+ html body header #shop-actions .wt-welcome-chip{min-width:62px!important}
+ html body header .lang{padding:0 8px!important;font-size:11px!important}
+}
+@media(max-width:560px){
+ html body header .w.hd{min-height:62px!important}
+ html body header #shop-actions .wt-admin-menu{display:none!important}
+ html body header #nav{position:fixed!important;top:70px!important;right:8px!important;left:8px!important;width:auto!important;max-height:calc(100dvh - 85px)!important;overflow:auto!important;border-radius:15px!important}
+}
