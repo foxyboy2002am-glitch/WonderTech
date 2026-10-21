@@ -67,3 +67,11 @@ header #nav a{min-height:0!important;padding:5px 10px!important;font-size:14px!i
 .cl .client-logo-mark.sprite-palm,#projects .client-logo-mark.sprite-palm{background-position:25% 100%!important}
 .cl .client-logo-mark.sprite-rema,#projects .client-logo-mark.sprite-rema{background-position:50% 100%!important}
 .cl .client-logo-mark.sprite-sultan,#projects .client-logo-mark.sprite-sultan{background-position:75% 100%!important}
+
+/* Real customer logo files enhanced by assets/extras.js */
+.cl .wt-client{min-width:0;min-height:132px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:14px 10px;overflow:hidden}
+.cl .wt-client .lgbox{width:100%;height:82px;display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:10px;background:#fff}
+.cl .wt-client .lgbox img{display:block;width:100%;height:100%;object-fit:contain;object-position:center;padding:5px;box-sizing:border-box}
+.cl .wt-client .lgbox:not(:has(img)){font-size:22px;font-weight:800;color:#183b67}
+.cl .wt-client b{display:block;max-width:100%;text-align:center;line-height:1.45;font-size:13px;overflow-wrap:anywhere}
+@media(max-width:600px){.cl .wt-client{min-height:112px;padding:10px 7px;gap:7px}.cl .wt-client .lgbox{height:66px}.cl .wt-client b{font-size:11px}}
