@@ -44,3 +44,26 @@ header #nav a{min-height:0!important;padding:5px 10px!important;font-size:14px!i
 .cl .client-logo{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;min-width:0}
 .cl .client-logo b{display:block;color:var(--ink);font-size:13px;text-align:center;overflow-wrap:anywhere}
 @media(max-width:600px){.cl .client-logo-mark.client-sprite{height:76px;min-height:60px}.cl .client-logo b{font-size:12px}}
+
+/* The client sprite is a 5-column x 3-row sheet. Previous UI rules changed it
+   to a 4x2 crop, shifting logos off their cells and making them appear missing. */
+.cl .client-logo-mark.client-sprite,
+#projects .client-logo-mark.client-sprite{
+  background-image:url("clients/client-sprite.webp")!important;
+  background-size:500% 300%!important;
+  background-repeat:no-repeat!important;
+  background-color:#fff!important;
+}
+.cl .client-logo-mark.sprite-aisha,#projects .client-logo-mark.sprite-aisha{background-position:0% 0%!important}
+.cl .client-logo-mark.sprite-malaz,#projects .client-logo-mark.sprite-malaz{background-position:25% 0%!important}
+.cl .client-logo-mark.sprite-alsalam,#projects .client-logo-mark.sprite-alsalam{background-position:50% 0%!important}
+.cl .client-logo-mark.sprite-chicken,#projects .client-logo-mark.sprite-chicken{background-position:75% 0%!important}
+.cl .client-logo-mark.sprite-friend,#projects .client-logo-mark.sprite-friend{background-position:100% 0%!important}
+.cl .client-logo-mark.sprite-haya,#projects .client-logo-mark.sprite-haya{background-position:0% 50%!important}
+.cl .client-logo-mark.sprite-joe,#projects .client-logo-mark.sprite-joe{background-position:25% 50%!important}
+.cl .client-logo-mark.sprite-logexco,#projects .client-logo-mark.sprite-logexco{background-position:75% 50%!important}
+.cl .client-logo-mark.sprite-malaki,#projects .client-logo-mark.sprite-malaki{background-position:100% 50%!important}
+.cl .client-logo-mark.sprite-alhayat,#projects .client-logo-mark.sprite-alhayat{background-position:0% 100%!important}
+.cl .client-logo-mark.sprite-palm,#projects .client-logo-mark.sprite-palm{background-position:25% 100%!important}
+.cl .client-logo-mark.sprite-rema,#projects .client-logo-mark.sprite-rema{background-position:50% 100%!important}
+.cl .client-logo-mark.sprite-sultan,#projects .client-logo-mark.sprite-sultan{background-position:75% 100%!important}
