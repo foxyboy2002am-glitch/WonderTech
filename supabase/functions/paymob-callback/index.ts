@@ -24,7 +24,7 @@ Deno.serve(async (req) => {
   let body: any;
   try { body = await req.json(); } catch { return reply(400, { error: "Invalid JSON." }); }
   const obj = body?.obj;
-  const supplied = String(body?.hmac ?? req.headers.get("x-paymob-hmac") ?? "");
+  const supplied = String(body?.hmac ?? new URL(req.url).searchParams.get("hmac") ?? req.headers.get("x-paymob-hmac") ?? "");
   if (!obj || !supplied) return reply(400, { error: "Missing transaction data or HMAC." });
 
   // Paymob Accept HMAC field order, concatenated without separators.
