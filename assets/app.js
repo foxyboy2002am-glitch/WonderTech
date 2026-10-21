@@ -297,7 +297,7 @@ function attachShopHandlers(){
     const name=$("#auth-name")?.value.trim()||"",confirm=$("#auth-confirm")?.value||"";
     if(password!==confirm){msg.textContent=L==="ar"?"كلمتا المرور غير متطابقتين.":"Passwords do not match.";return}
     result=await supabaseClient.auth.signUp({email,password,options:{data:{full_name:name}}});
-    if(!result.error){authUser=result.data.session?.user||null;msg.textContent=t.signupSent;}
+    if(!result.error){authUser=result.data.session?.user||null;msg.textContent=t.signupSent;if(authUser&&new URLSearchParams(location.hash.split("?")[1]||"").get("next")==="checkout"){setTimeout(()=>{location.hash="#/checkout";},500);}}
    }else if(location.hash.split("?")[0]==="#/reset-password"){
     if(new URLSearchParams(location.search).get("auth")==="reset"){
      const confirm=$("#auth-confirm")?.value||"";
