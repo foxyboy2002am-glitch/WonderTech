@@ -340,7 +340,7 @@ $("#so").onchange=e=>{F.sort=e.target.value;render()};
 $("#reset").onclick=()=>{Object.assign(F,{cat:"all",q:"",max:MAX,stock:false,sort:"def"});$("#q").value="";$("#stk").checked=false;$("#so").value="def";render()};
 $("#fb").onclick=()=>$("aside").classList.toggle("show");
 render();
-const m=location.hash.match(/^#p(\d+)$/);if(m)open(m[1]);
+const m=location.hash.match(/^#p(\d+)$/);if(m&&byId(m[1]))open(m[1]);else{closeAll();}
 </script>
 </body>
 </html>
