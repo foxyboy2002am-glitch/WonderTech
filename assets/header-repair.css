@@ -77,3 +77,18 @@ html body.wt-light-theme header #nav a:hover,html body.wt-light-theme header #na
  html body header #shop-actions .shop-nav-link{font-size:10px!important}
  html body header #nav{position:fixed!important;top:66px!important;inset-inline:8px!important;max-height:calc(100dvh - 82px)!important;border-radius:14px!important}
 }
+
+/* Follow-up polish: hide the old menu label and make header spacing intentional. */
+html body header #mb.menu{font-size:0!important;letter-spacing:0!important;overflow:hidden!important}
+html body header #mb.menu::before{font-size:21px!important;content:"☰"!important}
+html body header .w.hd{gap:10px!important;padding-inline:18px!important}
+html body header .logo{margin-inline-start:0!important}
+html body header #shop-actions.shop-actions{gap:7px!important}
+html body header #shop-actions .wt-settings-dropdown button#wt-theme-toggle{font-size:0!important}
+html body header #shop-actions .wt-settings-dropdown button#wt-theme-toggle::after{content:"الوضع الفاتح";font-size:13px!important}
+html body header #shop-actions .wt-settings-dropdown button#wt-theme-dark{font-size:0!important}
+html body header #shop-actions .wt-settings-dropdown button#wt-theme-dark::after{content:"الوضع الداكن";font-size:13px!important}
+@media(min-width:1051px){
+ html body header .w.hd{min-height:72px!important}
+ html body header #nav{inset-inline:18px!important}
+}
