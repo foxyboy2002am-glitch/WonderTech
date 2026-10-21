@@ -293,12 +293,12 @@ function attachShopHandlers(){
   const password=$("#auth-password")?.value||"";
   try{
    let result;
-   if(location.hash==="#/register"){
+   if(location.hash.split("?")[0]==="#/register"){
     const name=$("#auth-name")?.value.trim()||"",confirm=$("#auth-confirm")?.value||"";
     if(password!==confirm){msg.textContent=L==="ar"?"كلمتا المرور غير متطابقتين.":"Passwords do not match.";return}
     result=await supabaseClient.auth.signUp({email,password,options:{data:{full_name:name}}});
     if(!result.error){authUser=result.data.session?.user||null;msg.textContent=t.signupSent;}
-   }else if(location.hash==="#/reset-password"){
+   }else if(location.hash.split("?")[0]==="#/reset-password"){
     if(new URLSearchParams(location.search).get("auth")==="reset"){
      const confirm=$("#auth-confirm")?.value||"";
      if(password!==confirm){msg.textContent=L==="ar"?"كلمتا المرور غير متطابقتين.":"Passwords do not match.";return}
@@ -357,7 +357,7 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return
  document.addEventListener('DOMContentLoaded',()=>setTheme(theme));if(document.body)setTheme(theme);
 })();
 function render(){
- const t=D[L],r=(location.hash.replace("#/","")||"home"),p=(R.includes(r)||["store","checkout","payment","login","register","account","cart","wishlist","reset-password"].includes(r))?r:"home";
+ const t=D[L],r=((location.hash.replace("#/","").split("?")[0])||"home"),p=(R.includes(r)||["store","checkout","payment","login","register","account","cart","wishlist","reset-password"].includes(r))?r:"home";
  document.documentElement.lang=L;document.documentElement.dir=L==="ar"?"rtl":"ltr";
  $("#nav").innerHTML=R.map(k=>`<a href="#/${k}" class="${k===p?"on":""}">${t.nav[k]}</a>`).join("");
  $("#lg").textContent=t.lang;$("#mb").textContent=t.menu;
