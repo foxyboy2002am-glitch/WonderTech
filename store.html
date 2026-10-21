@@ -81,6 +81,8 @@ aside label{display:flex;gap:8px;align-items:center;font-size:14.5px}
 .ov{position:fixed;inset:0;z-index:80;background:rgba(3,10,25,.62);display:none}.ov.show{display:block}
 .modal{position:fixed;inset:4vh 0 auto;margin:0 auto;z-index:90;width:min(960px,calc(100% - 24px));max-height:92vh;overflow:auto;background:var(--sf);border-radius:18px;box-shadow:0 30px 80px rgba(0,0,0,.45);display:none}
 .modal.show{display:block}
+/* Defensive: never display an empty product dialog (e.g. stale/invalid product hash). */
+.modal:empty,.modal.show:empty{display:none!important}
 .x{position:absolute;top:12px;inset-inline-end:12px;z-index:3;width:38px;height:38px;border-radius:50%;border:1px solid var(--ln);background:var(--sf);font-size:18px}
 .pd{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:24px;padding:26px}
 .pd .art{font-size:110px;aspect-ratio:1}
