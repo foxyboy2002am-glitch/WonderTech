@@ -181,7 +181,7 @@ function initSupabase(){
 supabaseClient=initSupabase();
 if(supabaseClient){
  supabaseClient.auth.getSession().then(async({data})=>{authUser=data.session?.user||null;await refreshAdminAccess();render();}).catch(()=>{});
- supabaseClient.auth.onAuthStateChange(async(_event,session)=>{authUser=session?.user||null;await refreshAdminAccess();render();});
+ supabaseClient.auth.onAuthStateChange((_event,session)=>{authUser=session?.user||null;refreshAdminAccess().then(()=>render()).catch(()=>render());});
 }
 function shopMsg(){return SHOP_COPY[L];}
 function safeText(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
