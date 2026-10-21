@@ -1,0 +1,61 @@
+/* WONDERTECH header-pro.css: تنظيم الهيدر + لمسات عامة. حمّله آخر ملف CSS (بعد ui-refinement.css) */
+:root{--hdr-line:rgba(43,196,255,.16);--chip:rgba(255,255,255,.05);--chip-line:rgba(43,196,255,.30);--r:12px}
+
+/* ===== الهيدر ===== */
+header{background:rgba(7,21,48,.97)!important;border-bottom:1px solid var(--hdr-line)!important;box-shadow:0 6px 24px rgba(0,8,24,.28)}
+header .w.hd{display:grid!important;grid-template-columns:auto minmax(0,1fr) auto!important;grid-template-areas:"logo actions lang" "nav nav nav"!important;column-gap:14px!important;row-gap:0!important;padding-block:0!important;min-height:0!important;align-items:center!important}
+header .logo{grid-area:logo;height:64px;gap:10px}
+header .logo img{height:42px;width:auto}
+header .menu{grid-area:lang;display:none!important}
+
+/* صف الأزرار: كل العناصر بنفس الارتفاع والشكل */
+header #shop-actions.shop-actions{grid-area:actions;justify-self:end;display:flex!important;flex-wrap:nowrap!important;align-items:center;gap:8px!important;width:auto!important;height:64px;margin:0!important;padding:0!important;border:0!important}
+header #shop-actions>*{flex:none!important;display:inline-flex;align-items:center;justify-content:center;gap:6px;height:40px;margin:0!important;padding:0 14px;max-width:none!important;border-radius:var(--r);border:1px solid var(--chip-line);background:var(--chip);color:#E8F1FF;font-size:14px;font-weight:600;line-height:1;text-decoration:none;white-space:nowrap;transition:background .18s,border-color .18s,transform .18s}
+header #shop-actions>*:hover{background:rgba(43,196,255,.14);border-color:var(--cy);transform:translateY(-1px)}
+header #shop-actions>a[href*="store"],header #shop-actions>a[href*="shop"]{background:linear-gradient(135deg,#1B6FD1,#1CA3EC);border-color:transparent;color:#fff;box-shadow:0 4px 16px rgba(28,163,236,.28)}
+header #shop-actions>a[href*="account"],header #shop-actions>a[href*="login"],header #shop-actions>a[href*="profile"]{background:rgba(43,196,255,.1);font-weight:700}
+header #shop-actions>.shop-cart-bubble{position:relative!important;inset:auto!important;width:40px!important;height:40px!important;padding:0;border-radius:var(--r)}
+header #shop-actions .cart-count-badge{top:-7px;inset-inline-start:-7px;right:auto;min-width:19px;height:19px;font-size:11px}
+
+/* قائمة إدارة المتجر */
+header #shop-actions>details{position:relative;padding:0!important;border:0!important;background:none!important;height:40px}
+header #shop-actions details>summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;height:40px;padding:0 14px;border-radius:var(--r);border:1px solid rgba(43,196,255,.55);background:rgba(43,196,255,.12);color:#8BE6FF;font-size:14px;font-weight:700;line-height:1;white-space:nowrap}
+header #shop-actions details>summary::-webkit-details-marker{display:none}
+header #shop-actions details>summary::after{content:none!important}
+header #shop-actions details[open]>summary,header #shop-actions details>summary:hover{background:rgba(43,196,255,.22)}
+header #shop-actions details>:is(div,ul,nav,menu){position:absolute;top:calc(100% + 10px);inset-inline-end:0;z-index:130;min-width:220px;display:flex;flex-direction:column;gap:2px;margin:0;padding:8px;list-style:none;background:#0b1f40;border:1px solid var(--chip-line);border-radius:14px;box-shadow:0 20px 44px rgba(0,8,24,.5)}
+header #shop-actions details>:is(div,ul,nav,menu) :is(a,button){display:flex;align-items:center;justify-content:flex-start;width:100%;min-height:40px;height:auto;padding:8px 12px;border:0;border-radius:10px;background:none;color:#E8F1FF;font:inherit;font-size:14px;text-align:start;text-decoration:none;cursor:pointer}
+header #shop-actions details>:is(div,ul,nav,menu) :is(a,button):hover{background:rgba(43,196,255,.14)}
+
+header .lang{grid-area:lang;justify-self:end;height:40px;padding:0 14px;border-radius:var(--r);border:1px solid var(--chip-line);background:var(--chip);color:#E8F1FF;font-weight:600}
+header .lang:hover{border-color:var(--cy);background:rgba(43,196,255,.14)}
+header #nav{grid-area:nav;justify-content:center!important;gap:4px!important;padding:6px 0 8px!important;border-top:1px solid var(--hdr-line)!important}
+header #nav a{padding:7px 14px!important;border-radius:999px!important;font-size:14px!important;color:#B7C9E6!important;transition:background .18s,color .18s}
+header #nav a:hover{background:rgba(255,255,255,.07)!important;color:#fff!important}
+header #nav a.on{background:linear-gradient(135deg,rgba(27,111,209,.55),rgba(28,163,236,.35))!important;color:#fff!important;font-weight:700;box-shadow:inset 0 0 0 1px rgba(43,196,255,.45)}
+
+@media (max-width:1020px){
+ header .w.hd{grid-template-columns:minmax(0,1fr) auto auto!important;grid-template-areas:"logo menu lang" "actions actions actions"!important;column-gap:8px!important}
+ header .menu{grid-area:menu;display:block!important;height:40px;border-radius:var(--r);padding:0 14px}
+ header #shop-actions.shop-actions{justify-self:stretch;justify-content:flex-start;height:auto;padding:8px 0 10px!important;border-top:1px solid var(--hdr-line)!important;overflow-x:auto;overflow-y:visible;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+ header #shop-actions.shop-actions::-webkit-scrollbar{display:none}
+ header #shop-actions>*{height:38px;padding:0 12px;font-size:13px}
+ header #shop-actions>details{height:38px}
+ header #shop-actions details>summary{height:38px;padding:0 12px;font-size:13px}
+ header #shop-actions>.shop-cart-bubble{width:38px!important;height:38px!important}
+ header #nav{position:absolute!important;top:100%;inset-inline:0;z-index:120;flex-direction:column!important;align-items:stretch;gap:2px!important;padding:10px 14px 14px!important;background:rgba(7,21,48,.99)!important;border:1px solid var(--hdr-line)!important;border-top:0!important;border-radius:0 0 16px 16px!important}
+ header #nav a{padding:12px 14px!important;font-size:15px!important;border-radius:10px!important}
+}
+@media (max-width:420px){header .logo b{font-size:16px}header .logo img{height:36px}}
+h1,h2{text-wrap:balance}
+.hero .w{padding-top:56px;padding-bottom:56px}
+section.s{padding:72px 0}
+.s h2{position:relative;padding-bottom:12px;margin-bottom:14px}
+.s h2::after{content:"";position:absolute;bottom:0;inset-inline-start:0;width:48px;height:3px;border-radius:3px;background:linear-gradient(90deg,var(--cy),transparent)}
+.box{border-radius:18px;box-shadow:0 6px 20px rgba(5,20,48,.07)}
+.box:hover{transform:translateY(-3px)}
+.btn{border-radius:12px;transition:transform .15s,filter .15s}
+.btn:hover{transform:translateY(-1px);filter:brightness(1.07)}
+.fab{border-radius:999px;padding:12px 22px;box-shadow:0 10px 26px rgba(18,161,80,.38)}
+footer{border-top:1px solid rgba(43,196,255,.18)}
+@media (prefers-reduced-motion:reduce){header #shop-actions>*,header #nav a,.btn,.box{transition:none!important}header #shop-actions>*:hover,.btn:hover,.box:hover{transform:none}}
