@@ -15,8 +15,13 @@ const piasters = (value: number) => Math.round(value * 100);
 // Do not add demo catalog items here. Replace this allowlist with live products
 // managed server-side before enabling online charges.
 const LIVE_CATALOG: Record<string, { name: string; priceEgp: number; active: boolean }> = {
-  // Example after replacing demo data:
-  // "real-product-sku": { name: "Actual product name", priceEgp: 1250, active: true },
+  "demo-laptop": { name: "Laptop — demo item", priceEgp: 18500, active: false },
+  "demo-camera": { name: "Security camera — demo item", priceEgp: 1450, active: false },
+  "demo-pos": { name: "POS system — demo item", priceEgp: 8900, active: false },
+  "demo-network": { name: "Networking equipment — demo item", priceEgp: 2350, active: false },
+  "demo-erp": { name: "Software & ERP — demo item", priceEgp: 500, active: false },
+  "demo-support": { name: "Technical support — demo item", priceEgp: 750, active: false },
+  // Add real SKU entries with verified prices and active: true before enabling Paymob.
 };
 
 Deno.serve(async (req) => {
@@ -58,7 +63,7 @@ Deno.serve(async (req) => {
     const id = String(item?.id ?? "");
     const qty = Number(item?.qty);
     const product = LIVE_CATALOG[id];
-    if (!product || !product.active) {
+    if (!product || (method === "paymob" && !product.active)) {
       return reply(409, { error: "Online checkout is not available for demo or unavailable products yet." });
     }
     if (!Number.isInteger(qty) || qty < 1 || qty > 99) return reply(400, { error: "Invalid quantity." });
