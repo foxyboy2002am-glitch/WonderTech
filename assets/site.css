@@ -347,3 +347,32 @@ button:disabled{opacity:.55;cursor:not-allowed}
  .shop-product p{font-size:.9rem}
 }
 @media(prefers-reduced-motion:reduce){.product-emoji{animation:none!important}.shop-product,.shop-nav-link,.shop-card-actions .icon-action{transition:none!important}}
+
+
+/* WonderTech mobile storefront correction: stable header, greeting and visible cart */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:100;isolation:isolate}
+header .hd{display:flex;align-items:center;flex-wrap:wrap;gap:10px;position:relative}
+#shop-actions.shop-actions{display:flex;align-items:center;justify-content:flex-end;gap:8px;flex:1 1 100%;order:6;width:100%;min-width:0;padding:8px 0 2px;margin:0;border-top:1px solid rgba(43,196,255,.18);overflow:visible}
+#shop-actions .shop-nav-link{min-width:0;max-width:none;flex:1 1 0;justify-content:center;text-align:center;overflow:hidden;text-overflow:ellipsis}
+#shop-actions .shop-cart-bubble{position:relative;flex:0 0 48px;width:48px;height:48px;z-index:2;animation:wtCartIn .35s ease-out}
+#shop-actions .cart-count-badge{top:-5px;right:-4px;min-width:21px;height:21px;display:grid;place-items:center}
+#shop-actions .shop-nav-link[href*="account"],#shop-actions .shop-nav-link[href*="login"]{max-width:46%;font-weight:700}
+@keyframes wtCartIn{from{opacity:.65;transform:translateY(5px) scale(.92)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media(max-width:600px){
+ header .hd{padding-top:8px;padding-bottom:8px;gap:8px}
+ header .logo{flex:1 1 auto;min-width:0;max-width:calc(100% - 100px)}
+ header .logo b{font-size:clamp(15px,4.4vw,20px);white-space:nowrap}
+ header .logo img{max-width:38px}
+ #shop-actions.shop-actions{order:8;flex:0 0 100%;gap:6px;justify-content:space-between}
+ #shop-actions .shop-nav-link{flex:1 1 0;max-width:none;min-height:42px;padding:7px 5px;font-size:12px;border-radius:12px}
+ #shop-actions .shop-cart-bubble{flex-basis:44px;width:44px;height:44px;flex-shrink:0}
+ #shop-actions .cart-count-badge{font-size:11px}
+ body{padding-bottom:env(safe-area-inset-bottom,0px)}
+ .fab{z-index:70;bottom:calc(12px + env(safe-area-inset-bottom,0px))}
+}
+@media(min-width:601px){
+ #shop-actions.shop-actions{flex:0 1 auto;order:4;width:auto;border-top:0;padding:0;margin-inline-start:auto}
+}
+@media(prefers-reduced-motion:reduce){
+ #shop-actions .shop-cart-bubble{animation:none!important}
+}
